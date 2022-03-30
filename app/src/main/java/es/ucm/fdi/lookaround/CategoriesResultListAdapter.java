@@ -34,8 +34,8 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         String name = categoryList.get(position).first;
         int image = categoryList.get(position).second;
-        holder.setName("name");
-        //holder.setImage(image);
+        holder.setName(categoryList.get(position).first);
+        //holder.setImage(categoryList.get(position).second);
     }
 
     @Override
