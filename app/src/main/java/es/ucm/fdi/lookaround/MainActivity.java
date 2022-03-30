@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,5 +40,16 @@ public class MainActivity extends AppCompatActivity {
                 new Pair<String, Integer>("Divisas",R.drawable.ic_restaurant_svg)
                 ));
         return names;
+    }
+
+    public void showPlaces(View view) {
+        /*Get the place the user has pushed (restaurante, bar, museo, etc.)*/
+
+        /*Start the activity. Create a new instance of the activity and create a new instance of an intent*/
+        /*CalculatorResultActivity calculatorResultActivity = new CalculatorResultActivity();
+        Intent it = new Intent(this, CalculatorResultActivity.class);
+        it.putExtra("type", type_place);
+        startActivity(it);
+        */
     }
 }
