@@ -1,7 +1,9 @@
 package es.ucm.fdi.lookaround;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +61,37 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
         private CategoriesResultListAdapter mAdapter;
         private TextView imageView;
         private TextView categoryView;
+        private TextView distanceView;
 
 
         public ItemViewHolder(View itemView, CategoriesResultListAdapter adapter) {
             super(itemView);
             this.categoryView = itemView.findViewById(R.id.textViewTitleContent);
             this.mAdapter = adapter;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+
+                    RequestQueue queue = Volley.newRequestQueue(v.getContext());
+                    String url ="http://www.google.com";
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    // Do something with response
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {}
+                    });
+                    queue.add(stringRequest);
+
+                    distanceView = v.findViewById(R.id.distanceText);
+                    Intent intentMain = new Intent(v.getContext(),
+                            ItemListActivity.class);
+                    v.getContext().startActivity(intentMain);
+                    Log.i("Content "," Results Layout ");
+                }
+            });
         }
 
         public void setName(String title) {

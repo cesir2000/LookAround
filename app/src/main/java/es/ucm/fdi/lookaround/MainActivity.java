@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Pair;
@@ -46,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
         /*Get the place the user has pushed (restaurante, bar, museo, etc.)*/
 
         /*Start the activity. Create a new instance of the activity and create a new instance of an intent*/
-        /*CalculatorResultActivity calculatorResultActivity = new CalculatorResultActivity();
-        Intent it = new Intent(this, CalculatorResultActivity.class);
-        it.putExtra("type", type_place);
+        ItemListActivity calculatorResultActivity = new ItemListActivity();
+        Intent it = new Intent(this, ItemListActivity.class);
+        //it.putExtra("type", type_place);
         startActivity(it);
-        */
+
     }
 }
