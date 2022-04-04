@@ -32,13 +32,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ArrayList<Pair<String, Integer>> createCategories() {
-        ArrayList<Pair<String, Integer>> names = new ArrayList<Pair<String, Integer>>(Arrays.asList(new Pair<String, Integer>("Restaurantes",R.drawable.ic_restaurant_svg),
-                new Pair<String, Integer>("Museos",R.drawable.ic_restaurant_svg),
-                new Pair<String, Integer>("Parques",R.drawable.ic_restaurant_svg),
-                new Pair<String, Integer>("Bares",R.drawable.ic_restaurant_svg),
-                new Pair<String, Integer>("Monumentos",R.drawable.ic_restaurant_svg),
-                new Pair<String, Integer>("Hoteles",R.drawable.ic_restaurant_svg),
-                new Pair<String, Integer>("Divisas",R.drawable.ic_restaurant_svg)
+        ArrayList<Pair<String, Integer>> names = new ArrayList<Pair<String, Integer>>(Arrays.asList(
+                new Pair<String, Integer>("Restaurantes",R.drawable.ic_restaurant_svg),
+                new Pair<String, Integer>("Museos",R.drawable.ic_museum_svgrepo_com),
+                new Pair<String, Integer>("Parques",R.drawable.ic_public_park_svgrepo_com),
+                new Pair<String, Integer>("Bares",R.drawable.ic_beer_svgrepo_com),
+                new Pair<String, Integer>("Monumentos",R.drawable.ic_monument_14_svgrepo_com),
+                new Pair<String, Integer>("Hoteles",R.drawable.ic_hotel_svgrepo_com),
+                new Pair<String, Integer>("Divisas",R.drawable.ic_dollar_euro_money_exchange_svgrepo_com)
                 ));
         return names;
     }
