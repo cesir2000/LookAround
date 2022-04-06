@@ -5,14 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Vector;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,5 +53,10 @@ public class MainActivity extends AppCompatActivity {
         //it.putExtra("type", type_place);
         startActivity(it);
 
+    }
+
+    public void onSearchButtonClick(View view){
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
     }
 }
