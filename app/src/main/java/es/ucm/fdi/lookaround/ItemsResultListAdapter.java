@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.okhttp.Callback;
+/*import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.squareup.okhttp.Response;*/
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -57,7 +57,7 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
 
         public ItemViewHolder(View itemView, ItemsResultListAdapter adapter) {
             super(itemView);
-            this.titleView = itemView.findViewById(R.id.textViewName);
+            this.titleView = itemView.findViewById(R.id.textViewTitleContentPlace);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

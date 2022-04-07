@@ -4,10 +4,10 @@ import android.content.ClipData;
 import android.util.Log;
 
 
-import com.squareup.okhttp.Callback;
+/*import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.squareup.okhttp.Response;*/
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -89,6 +89,7 @@ public class ItemInfo implements Serializable {
                 tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
                 Log.d("JSONDataExtract","Total user ratings Extracted");
                 *********************************************************************************************************************************/
+                tmpItem.name = "Restaurante";
                 itemList.add(tmpItem);
             }
         } catch (JSONException e) {
@@ -97,9 +98,9 @@ public class ItemInfo implements Serializable {
         return itemList;
     }
 
-    public static String getDistance(String latitudeOrigin, String longitudeOrigin, String latitudeDestination, String longitudeDestination, String mode) {
+    /*public static String getDistance(String latitudeOrigin, String longitudeOrigin, String latitudeDestination, String longitudeDestination, String mode) {
         final String[] responseData = new String[1];
-        OkHttpClient client = new OkHttpClient();
+        /*OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://maps.googleapis.com/maps/api/distancematrix/json" +
                         "?origins="+ latitudeOrigin + "%2C"+ longitudeOrigin+
@@ -119,7 +120,7 @@ public class ItemInfo implements Serializable {
             }
         });
         return responseData[0];
-    }
+    }*/
 
     public void setName(String name) {
         this.name = name;

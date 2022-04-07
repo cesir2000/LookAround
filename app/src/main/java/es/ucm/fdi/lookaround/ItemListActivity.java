@@ -21,7 +21,7 @@ public class ItemListActivity extends AppCompatActivity {
         itemsList = (ArrayList<ItemInfo>) getIntent().getSerializableExtra("itemsList");
 
         // Recycler view
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerItemList);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewItems);
         itemsAdapter = new ItemsResultListAdapter(this, itemsList);
         itemsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(itemsAdapter);

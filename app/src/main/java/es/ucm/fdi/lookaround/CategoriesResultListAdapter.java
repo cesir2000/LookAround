@@ -13,10 +13,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.okhttp.Callback;
+/*import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.squareup.okhttp.Response;*/
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,15 +89,19 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                 @Override
                 public void onClick(View v) {
                     distanceView = v.findViewById(R.id.distanceText);
-                    OkHttpClient client = new OkHttpClient();
+
+                    //https://developers.google.com/maps/documentation/places/web-service/search-nearby
+                    //https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project api create account
+
+                   /* OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
                             .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
                                     "keyword=" + searchNames.get(categoryView.getText().toString()) +
                                     "&location=" + latitude + "%2C" + longitude +
                                     "&type=" + searchNames.get(categoryView.getText().toString()) +
                                     "&rankby=distance"+
-                                    "&key=").build();
-                    client.newCall(request).enqueue(new Callback() {
+                                    "&key=").build();*/
+                    /*client.newCall(request).enqueue(new Callback() {
                         @Override
                         public void onFailure(Request request, IOException e) {
 
@@ -108,8 +112,11 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                             String responseData = response.body().string();
                             itemsList = ItemInfo.fromJsonResponse(responseData, latitude, longitude);
                         }
-                    });
-
+                    });*/
+                    itemsList = new ArrayList<ItemInfo>();
+                    ItemInfo tmpItem = new ItemInfo();
+                    tmpItem.setName("Restaurante");
+                    itemsList.add(tmpItem);
                     Intent intentMain = new Intent(v.getContext(),
                             ItemListActivity.class);
                     intentMain.putExtra("itemsList", (Serializable) itemsList);

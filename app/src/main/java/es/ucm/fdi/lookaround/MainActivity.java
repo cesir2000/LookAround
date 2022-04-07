@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "hotel", "atm"};
     String latitude;
     String longitude;
-    private int[] images = {R.drawable.ic_restaurant_svg, R.drawable.ic_restaurant_svg, R.drawable.ic_restaurant_svg, R.drawable.ic_restaurant_svg, R.drawable.ic_restaurant_svg, R.drawable.ic_restaurant_svg, R.drawable.ic_restaurant_svg};
+    private int[] images = {R.drawable.ic_restaurant_svg, R.drawable.ic_museum_svgrepo_com, R.drawable.ic_public_park_svgrepo_com, R.drawable.ic_beer_svgrepo_com, R.drawable.ic_monument_14_svgrepo_com, R.drawable.ic_hotel_svgrepo_com, R.drawable.ic_dollar_euro_money_exchange_svgrepo_com};
     private FusedLocationProviderClient mFusedLocationClient;
     private LocationSettingsRequest.Builder requestBuilder;
     private LocationRequest mLocationRequest;
