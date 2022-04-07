@@ -106,7 +106,7 @@ public class ItemInfo implements Serializable {
                         "&destinations=" + latitudeDestination + "%2C"+ longitudeDestination +
                         "&mode="+ mode +
                         "&language=es-ES" +
-                        "&key=AIzaSyDTOWVjYUuUg1RESfwrVCET2xGWL92rug4").build();
+                        "&key=").build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
