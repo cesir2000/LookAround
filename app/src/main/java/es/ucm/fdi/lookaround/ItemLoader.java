@@ -77,7 +77,8 @@ public class ItemLoader extends AsyncTaskLoader<List<ItemInfo>> {
         }
         Log.d("JSONResult", contentAsString);
 
-        return ItemInfo.fromJsonResponse(contentAsString);
+        //return ItemInfo.fromJsonResponse(contentAsString);
+        return null;
     }
 
     public String convertIsToString(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
@@ -85,9 +86,9 @@ public class ItemLoader extends AsyncTaskLoader<List<ItemInfo>> {
         reader = new InputStreamReader(stream, "UTF-8");
         int nextCharacter; // read() returns an int, we cast it to char later
         String responseData = "";
-        while(true){ // Infinite loop, can only be stopped by a "break" statement
+        while (true) { // Infinite loop, can only be stopped by a "break" statement
             nextCharacter = reader.read(); // read() without parameters returns one character
-            if(nextCharacter == -1) // A return value of -1 means that we reached the end
+            if (nextCharacter == -1) // A return value of -1 means that we reached the end
                 break;
             responseData += (char) nextCharacter; // The += operator appends the character to the end of the string
         }
