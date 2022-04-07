@@ -8,6 +8,7 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +55,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
         String name = categoryList.get(position).first;
         int image = categoryList.get(position).second;
         holder.setName(categoryList.get(position).first);
-        //holder.setImage(categoryList.get(position).second);
+        holder.setImage(categoryList.get(position).second);
     }
 
     @Override
@@ -71,7 +72,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private CategoriesResultListAdapter mAdapter;
-        private TextView imageView;
+        private ImageView imageView;
         private TextView categoryView;
         private TextView distanceView;
         private List<ItemInfo> itemsList;
@@ -79,6 +80,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
 
         public ItemViewHolder(View itemView, CategoriesResultListAdapter adapter) {
             super(itemView);
+            this.imageView=itemView.findViewById(R.id.imageViewSVGContent);
             this.categoryView = itemView.findViewById(R.id.textViewTitleContent);
             this.mAdapter = adapter;
 
@@ -121,8 +123,8 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
             categoryView.setText(name);
         }
 
-        public void setImage(int authors) {
-            imageView.setText(authors);
+        public void setImage(int image) {
+            imageView.setImageResource(image);
         }
 
     }

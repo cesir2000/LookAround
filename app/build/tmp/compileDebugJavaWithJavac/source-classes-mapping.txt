@@ -1,0 +1,7 @@
+es/ucm/fdi/lookaround/BuildConfig.java
+ es.ucm.fdi.lookaround.BuildConfig
+es/ucm/fdi/lookaround/MainActivity.java
+ es.ucm.fdi.lookaround.MainActivity
+es/ucm/fdi/lookaround/SearchActivity.java
+ es.ucm.fdi.lookaround.SearchActivity
+ es.ucm.fdi.lookaround.SearchActivity$1

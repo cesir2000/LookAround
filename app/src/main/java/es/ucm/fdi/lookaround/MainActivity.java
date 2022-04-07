@@ -38,6 +38,7 @@ import com.google.android.gms.tasks.Task;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -201,7 +202,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < cardNames.length; i++) {
             names.add(new Pair<>(cardNames[i], images[i]));
         }
-
         return names;
     }
 
@@ -214,5 +214,10 @@ public class MainActivity extends AppCompatActivity {
         //it.putExtra("type", type_place);
         startActivity(it);
 
+    }
+
+    public void onSearchButtonClick(View view){
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
     }
 }
