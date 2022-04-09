@@ -2450,17 +2450,24 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ic_beer_svgrepo_com
 drawable ic_clock_black_24dp
+drawable ic_dollar_euro_money_exchange_svgrepo_com
+drawable ic_hotel_svgrepo_com
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
+drawable ic_monument_14_svgrepo_com
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_museum_svgrepo_com
+drawable ic_public_park_svgrepo_com
+drawable ic_restaurant_svg
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
 drawable m3_radiobutton_ripple
@@ -2506,6 +2513,7 @@ drawable test_custom_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font asul
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2633,6 +2641,7 @@ id collapseActionView
 id compress
 id confirm_button
 id constraint
+id constraintLayout
 id container
 id content
 id contentPanel
@@ -2645,6 +2654,8 @@ id currentState
 id custom
 id customPanel
 id cut
+id cv
+id cv2
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -2665,6 +2676,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id distanceText
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -2722,6 +2734,7 @@ id ignore
 id ignoreRequest
 id image
 id imageButton
+id imageViewSVGContent
 id immediateStop
 id included
 id info
@@ -2844,6 +2857,11 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerView
+id recyclerViewItems
+id relativeLayout
+id relativeLayout2
+id relativeLayoutPlace
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2937,7 +2955,11 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
+id textViewDistanceContent
 id textViewResult
+id textViewTitleContent
+id textViewTitleContentPlace
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3070,8 +3092,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_item_list
 layout activity_main
 layout activity_search
+layout category_item
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3140,6 +3164,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout place_item
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -3304,6 +3329,7 @@ style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
+style AppTheme
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -3606,6 +3632,8 @@ style Platform_V21_AppCompat_Light
 style Platform_V25_AppCompat
 style Platform_V25_AppCompat_Light
 style Platform_Widget_AppCompat_Spinner
+style RobotoButtonStyle
+style RobotoTextViewStyle
 style RtlOverlay_DialogWindowTitle_AppCompat
 style RtlOverlay_Widget_AppCompat_ActionBar_TitleItem
 style RtlOverlay_Widget_AppCompat_DialogTitle_Icon

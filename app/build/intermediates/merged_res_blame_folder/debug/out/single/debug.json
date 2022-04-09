@@ -1,19 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_monument_14_svgrepo_com.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_monument_14_svgrepo_com.xml"
     },
     {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
@@ -24,67 +16,95 @@
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_item_list.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\layout\\activity_item_list.xml"
     },
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_dollar_euro_money_exchange_svgrepo_com.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_dollar_euro_money_exchange_svgrepo_com.xml"
     },
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
-    },
-    {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
-    },
-    {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_restaurant_svg.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_restaurant_svg.xml"
     },
     {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_search.xml.flat",
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\layout\\activity_search.xml"
     },
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
-    },
-    {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\layout_category_item.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\layout\\category_item.xml"
     },
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
-    },
-    {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
-    },
-    {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_beer_svgrepo_com.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_beer_svgrepo_com.xml"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\font_asul.ttf.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\font\\asul.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_public_park_svgrepo_com.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_public_park_svgrepo_com.xml"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\layout_place_item.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\layout\\place_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_hotel_svgrepo_com.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_hotel_svgrepo_com.xml"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_museum_svgrepo_com.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_museum_svgrepo_com.xml"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     }
 ]
