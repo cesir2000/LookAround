@@ -1,4 +1,4 @@
-#Wed Apr 06 15:40:50 CEST 2022
+#Sun Apr 10 00:00:37 CEST 2022
 base.0=C\:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
