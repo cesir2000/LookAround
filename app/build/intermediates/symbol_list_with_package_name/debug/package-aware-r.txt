@@ -2683,6 +2683,7 @@ id compress
 id confirm_button
 id constraint
 id constraintLayout
+id constraintLayout2
 id container
 id content
 id contentPanel
@@ -2776,7 +2777,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageButton
 id imageButton2
 id imageButton3
 id imageButton4
@@ -3234,6 +3234,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout toolsbar
 menu example_menu
 menu example_menu2
 mipmap ic_launcher

@@ -36,6 +36,10 @@
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\layout_toolsbar.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\layout\\toolsbar.xml"
+    },
+    {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\layout_category_item.xml.flat",
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\layout\\category_item.xml"
     },
