@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_monument_14_svgrepo_com.xml.flat",
-        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_monument_14_svgrepo_com.xml"
-    },
-    {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_monument_14_svgrepo_com.xml.flat",
+        "source": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\src\\main\\res\\drawable\\ic_monument_14_svgrepo_com.xml"
     },
     {
         "merged": "C:\\Users\\Zeus_\\Documents\\GitHub\\LookAround\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
