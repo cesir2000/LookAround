@@ -8,7 +8,6 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
@@ -23,7 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.common.api.ApiException;
+/*import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -34,7 +33,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Task;*/
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
     String latitude;
     String longitude;
     private int[] images = {R.drawable.ic_restaurant_svg, R.drawable.ic_museum_svgrepo_com, R.drawable.ic_public_park_svgrepo_com, R.drawable.ic_beer_svgrepo_com, R.drawable.ic_monument_14_svgrepo_com, R.drawable.ic_hotel_svgrepo_com, R.drawable.ic_dollar_euro_money_exchange_svgrepo_com};
-    private FusedLocationProviderClient mFusedLocationClient;
+    /*private FusedLocationProviderClient mFusedLocationClient;
     private LocationSettingsRequest.Builder requestBuilder;
-    private LocationRequest mLocationRequest;
+    private LocationRequest mLocationRequest;*/
 
 
     @Override
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Get user last known location
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        /*mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         mLocationRequest = LocationRequest.create()
                 .setInterval(5)
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNumUpdates(1);
 
         getLocation(); // Method to get location of the user
-        Log.d("MainActivityLog","End of onCreate()");
+        Log.d("MainActivityLog","End of onCreate()");*/
     }
 
     public void setLocation(String latitude, String longitude) {
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         categoriesAdapter.setLocation(latitude, longitude);
         categoriesAdapter.notifyDataSetChanged();
     }
-
+    /*
     @SuppressLint("MissingPermission")
     private void getLocation() {
         // check if permissions are given
@@ -156,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
     }
-
-    private LocationCallback mLocationCallback = new LocationCallback() {
+    */
+    /*private LocationCallback mLocationCallback = new LocationCallback() {
 
         @Override
         public void onLocationResult(LocationResult locationResult) {
@@ -165,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             latitude = String.valueOf(mLastLocation.getLatitude());
             longitude = String.valueOf(mLastLocation.getLongitude());
         }
-    };
+    };*/
 
     // Method to check if the permissions are on
     private boolean checkPermissions() {
@@ -217,20 +216,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onHomeButtonClick(View view){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-
-    public void onMapsButtonClick(View view){
-        //Intent intent = new Intent(getApplicationContext(), MapActivity.class);
-        //startActivity(intent);
-    }
-
     public void onSearchButtonClick(View view){
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
-
 }
