@@ -115,7 +115,17 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                     });*/
                     itemsList = new ArrayList<ItemInfo>();
                     ItemInfo tmpItem = new ItemInfo();
+<<<<<<< Updated upstream
                     tmpItem.setName("Restaurante");
+=======
+                    tmpItem.setName("Restaurantejsfj");
+                    tmpItem.setDistance("12km");
+                    tmpItem.setRating(4.3);
+                    tmpItem.setTotalRatings(43);
+                    tmpItem.setOpen(true);
+                    tmpItem.setTimeCar("2min");
+                    tmpItem.setTimeWalking("10min");
+>>>>>>> Stashed changes
                     itemsList.add(tmpItem);
                     Intent intentMain = new Intent(v.getContext(),
                             ItemListActivity.class);

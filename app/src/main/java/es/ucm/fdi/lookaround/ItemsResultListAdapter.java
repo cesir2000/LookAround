@@ -41,6 +41,14 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
     @Override
     public void onBindViewHolder(ItemsResultListAdapter.ItemViewHolder holder, int position) {
         holder.setName(items.get(position).getName());
+<<<<<<< Updated upstream
+=======
+        //holder.setDistance(items.get(position).getDistance());
+        holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
+        holder.setOpen(items.get(position).getOpen());
+        holder.setTimeCar(items.get(position).getTimeCar());
+        holder.setTimeWalking(items.get(position).getTimeWalking());
+>>>>>>> Stashed changes
     }
 
     @Override
@@ -58,6 +66,15 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         public ItemViewHolder(View itemView, ItemsResultListAdapter adapter) {
             super(itemView);
             this.titleView = itemView.findViewById(R.id.textViewTitleContentPlace);
+<<<<<<< Updated upstream
+=======
+
+            this.timeCarView = itemView.findViewById(R.id.textViewCar);
+            this.timeWalkingView = itemView.findViewById(R.id.textViewWalking);
+            //this.distanceView = itemView.findViewById(R.id.textViewDistanceContent);
+            this.ratingView = itemView.findViewById(R.id.textViewRating);
+            this.openView = itemView.findViewById(R.id.textViewOpen);
+>>>>>>> Stashed changes
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

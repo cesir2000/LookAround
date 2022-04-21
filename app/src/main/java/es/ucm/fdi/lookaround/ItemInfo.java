@@ -134,6 +134,14 @@ public class ItemInfo implements Serializable {
         this.open = open;
     }
 
+<<<<<<< Updated upstream
+=======
+    /* Setters */
+
+    public void setOpen(boolean open) { this.open = open; }
+
+
+>>>>>>> Stashed changes
     public void setPlaceId(String placeId) { this.placeId = placeId; }
 
     public void setPriceLevel(int priceLevel) { this.priceLevel = priceLevel; }
@@ -142,6 +150,16 @@ public class ItemInfo implements Serializable {
 
     public void setTotalRatings(int totalRatings) { this.totalRatings = totalRatings; }
 
+<<<<<<< Updated upstream
+=======
+
+    public void setTimeWalking(String timeWalking) { this.timeWalking = timeWalking; }
+
+    public void setTimeCar(String timeCar) { this.timeCar = timeCar; }
+
+    /* Getters */
+
+>>>>>>> Stashed changes
     public String getName() { return this.name;}
 
 
