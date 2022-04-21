@@ -8,10 +8,17 @@
     <EditText
         android:id="@+id/editTextTextPlaceName"
         android:layout_width="0dp"
-        android:layout_height="79dp"
+
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/group_background"
         android:ems="10"
         android:hint="Name of place to find"
         android:inputType="textPersonName"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,7 +35,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPlaceName" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+       
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,8 +48,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
-        <include layout="@layout/toolsbar"></include>
+
+        <include layout="@layout/toolsbar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/group_background"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPlaceName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPlaceName">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Distancia (Km.)" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <SeekBar
+                android:id="@+id/seekBar2"
+                android:layout_width="206dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 

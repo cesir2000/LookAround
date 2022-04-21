@@ -220,16 +220,21 @@ public class MainActivity extends AppCompatActivity {
     public void onHomeButtonClick(View view){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 
     public void onMapsButtonClick(View view){
-        //Intent intent = new Intent(getApplicationContext(), MapActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
     }
 
     public void onSearchButtonClick(View view){
         Intent intent = new Intent(this, SearchActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
         startActivity(intent);
     }
 

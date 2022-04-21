@@ -1,6 +1,10 @@
 package es.ucm.fdi.lookaround;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.util.Pair;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +17,13 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;*/
 
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 
 public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultListAdapter.ItemViewHolder>{
     private LayoutInflater mInflater;
@@ -56,9 +66,11 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         private TextView ratingView;
         private TextView openView;
 
+
         public ItemViewHolder(View itemView, ItemsResultListAdapter adapter) {
             super(itemView);
             this.titleView = itemView.findViewById(R.id.textViewTitleContentPlace);
+
             this.timeCarView = itemView.findViewById(R.id.textViewCar);
             this.timeWalkingView = itemView.findViewById(R.id.textViewWalking);
             this.distanceView = itemView.findViewById(R.id.textViewDistanceContent);
@@ -86,6 +98,7 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
             if(open) openView.setText("Abierto");
             else openView.setText("Cerrado");
         }
+
 
     }
 
