@@ -43,6 +43,7 @@ public class ItemInfo implements Serializable {
                 // Name of the place
                 tmpItem.name = itemsArray.getJSONObject(i).getString("name");
                 Log.d("JSONDataExtract","Name Extracted");
+
                 /*************************************************************************************************************************
                 // Get latitude and longitude for distance and time
                 String longitudeDestination, latitudeDestination;
@@ -90,6 +91,12 @@ public class ItemInfo implements Serializable {
                 Log.d("JSONDataExtract","Total user ratings Extracted");
                 *********************************************************************************************************************************/
                 tmpItem.name = "Restaurante";
+                tmpItem.distance = "12km";
+                tmpItem.rating=4.3;
+                tmpItem.totalRatings=43;
+                tmpItem.open=true;
+                tmpItem.timeCar = "2min";
+                tmpItem.timeWalking = "10min";
                 itemList.add(tmpItem);
             }
         } catch (JSONException e) {
@@ -122,6 +129,7 @@ public class ItemInfo implements Serializable {
         return responseData[0];
     }*/
 
+
     public void setName(String name) {
         this.name = name;
     }
@@ -134,6 +142,15 @@ public class ItemInfo implements Serializable {
         this.open = open;
     }
 
+    /* Setters */
+
+    public void setName(String name) { this.name = name; }
+
+    public void setDistance(String distance) { this.distance = distance; }
+
+    public void setOpen(boolean open) { this.open = open; }
+
+
     public void setPlaceId(String placeId) { this.placeId = placeId; }
 
     public void setPriceLevel(int priceLevel) { this.priceLevel = priceLevel; }
@@ -142,7 +159,33 @@ public class ItemInfo implements Serializable {
 
     public void setTotalRatings(int totalRatings) { this.totalRatings = totalRatings; }
 
+
     public String getName() { return this.name;}
+
+
+    public void setTimeWalking(String timeWalking) { this.timeWalking = timeWalking; }
+
+    public void setTimeCar(String timeCar) { this.timeCar = timeCar; }
+
+    /* Getters */
+
+    public String getName() { return this.name;}
+
+    public String getDistance() { return this.distance;}
+
+    public double getRating() { return this.rating;}
+
+    public int getPriceLevel() { return this.priceLevel; }
+
+    public String getPlaceId() { return this.placeId; }
+
+    public int getTotalRatings() { return this.totalRatings; }
+
+    public boolean getOpen() { return this.open; }
+
+    public String getTimeWalking(){return this.timeWalking;}
+
+    public String getTimeCar() {return this.timeCar;}
 
 
 }

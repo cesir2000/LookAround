@@ -1,0 +1,26 @@
+es/ucm/fdi/lookaround/ItemLoader.java
+ es.ucm.fdi.lookaround.ItemLoader
+es/ucm/fdi/lookaround/ItemLoaderCallbacks.java
+ es.ucm.fdi.lookaround.ItemLoaderCallbacks
+es/ucm/fdi/lookaround/BuildConfig.java
+ es.ucm.fdi.lookaround.BuildConfig
+es/ucm/fdi/lookaround/ItemInfo.java
+ es.ucm.fdi.lookaround.ItemInfo
+es/ucm/fdi/lookaround/ItemsResultListAdapter.java
+ es.ucm.fdi.lookaround.ItemsResultListAdapter
+ es.ucm.fdi.lookaround.ItemsResultListAdapter$ItemViewHolder
+ es.ucm.fdi.lookaround.ItemsResultListAdapter$ItemViewHolder$1
+es/ucm/fdi/lookaround/CategoriesResultListAdapter.java
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1
+es/ucm/fdi/lookaround/ItemListActivity.java
+ es.ucm.fdi.lookaround.ItemListActivity
+es/ucm/fdi/lookaround/MainActivity.java
+ es.ucm.fdi.lookaround.MainActivity
+ es.ucm.fdi.lookaround.MainActivity$1
+ es.ucm.fdi.lookaround.MainActivity$1$1
+ es.ucm.fdi.lookaround.MainActivity$2
+es/ucm/fdi/lookaround/SearchActivity.java
+ es.ucm.fdi.lookaround.SearchActivity
+ es.ucm.fdi.lookaround.SearchActivity$1

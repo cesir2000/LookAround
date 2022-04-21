@@ -44,9 +44,11 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void onMapsButtonClick(View view){
+
         Intent intent = new Intent(getApplicationContext(), MapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
+
     }
 
     public void onSearchButtonClick(View view){
