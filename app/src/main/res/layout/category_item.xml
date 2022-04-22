@@ -46,7 +46,7 @@
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
-            android:layout_width="313dp"
+            android:layout_width="0dp"
             android:layout_height="80dp"
             android:background="#A4D6A4"
             android:padding="6dp"
