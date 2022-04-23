@@ -129,19 +129,6 @@ public class ItemInfo implements Serializable {
         return responseData[0];
     }*/
 
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDistance(String distance) {
-        this.distance = distance;
-    }
-
-    public void setTitle(boolean open) {
-        this.open = open;
-    }
-
     /* Setters */
 
     public void setName(String name) { this.name = name; }
@@ -158,10 +145,6 @@ public class ItemInfo implements Serializable {
     public void setRating(double rating) { this.rating = rating; }
 
     public void setTotalRatings(int totalRatings) { this.totalRatings = totalRatings; }
-
-
-    public String getName() { return this.name;}
-
 
     public void setTimeWalking(String timeWalking) { this.timeWalking = timeWalking; }
 
