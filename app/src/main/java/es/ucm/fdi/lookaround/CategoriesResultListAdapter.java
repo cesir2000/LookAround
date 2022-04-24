@@ -26,6 +26,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class CategoriesResultListAdapter extends RecyclerView.Adapter<CategoriesResultListAdapter.ItemViewHolder> {
 
@@ -34,13 +41,15 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
     private Map<String, String> searchNames;
     private String latitude;
     private String longitude;
+    private TextView distance;
 
-    public CategoriesResultListAdapter(Context context, ArrayList<Pair<String, Integer>> itemList, Map<String, String> searchNames, String latitude, String longitude) {
+    public CategoriesResultListAdapter(Context context, ArrayList<Pair<String, Integer>> itemList, Map<String, String> searchNames, String latitude, String longitude, TextView distance) {
         mInflater = LayoutInflater.from(context);
         this.categoryList = itemList;
         this.searchNames = searchNames;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.distance = distance;
     }
 
     @Override
@@ -74,7 +83,6 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
         private CategoriesResultListAdapter mAdapter;
         private ImageView imageView;
         private TextView categoryView;
-        private TextView distanceView;
         private List<ItemInfo> itemsList;
 
 
@@ -88,32 +96,42 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    distanceView = v.findViewById(R.id.distanceText);
+
+                    String distanceText;
+                    if (!distance.getText().toString().equals("")) {
+                        distanceText = Double.parseDouble(distance.getText().toString())*1000+"";
+                    }
+                    else {
+                        distanceText = "10000";  // Default distance set to 10km
+                    }
 
                     //https://developers.google.com/maps/documentation/places/web-service/search-nearby
                     //https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project api create account
 
-                   /* OkHttpClient client = new OkHttpClient();
+                    CountDownLatch countDownLatch = new CountDownLatch(1);
+                    OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
                             .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-                                    "keyword=" + searchNames.get(categoryView.getText().toString()) +
                                     "&location=" + latitude + "%2C" + longitude +
+                                    "&radius="+distanceText+
                                     "&type=" + searchNames.get(categoryView.getText().toString()) +
-                                    "&rankby=distance"+
-                                    "&key=").build();*/
-                    /*client.newCall(request).enqueue(new Callback() {
+                                    "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
+                    client.newCall(request).enqueue(new Callback() {
                         @Override
-                        public void onFailure(Request request, IOException e) {
+                        public void onFailure(Call call, IOException e) {
 
                         }
 
                         @Override
-                        public void onResponse(Response response) throws IOException {
+                        public void onResponse(Call call, Response response) throws IOException {
                             String responseData = response.body().string();
                             itemsList = ItemInfo.fromJsonResponse(responseData, latitude, longitude);
+                            countDownLatch.countDown();
                         }
-                    });*/
-                    itemsList = new ArrayList<ItemInfo>();
+
+                    });
+
+                    /*itemsList = new ArrayList<ItemInfo>();
                     ItemInfo tmpItem = new ItemInfo();
                     tmpItem.setName("Restaurantejsfj");
                     tmpItem.setDistance("12km");
@@ -122,7 +140,15 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                     tmpItem.setOpen(true);
                     tmpItem.setTimeCar("2min");
                     tmpItem.setTimeWalking("10min");
-                    itemsList.add(tmpItem);
+                    itemsList.add(tmpItem);*/
+
+                    // Wait for the request to finish
+                    try {
+                        countDownLatch.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                     Intent intentMain = new Intent(v.getContext(),
                             ItemListActivity.class);
                     intentMain.putExtra("itemsList", (Serializable) itemsList);

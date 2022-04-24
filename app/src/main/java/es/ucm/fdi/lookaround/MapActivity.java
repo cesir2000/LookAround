@@ -214,16 +214,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 startActivity(intent);
             }
         });
-        /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                // On marker click, a search with selected distance and category is selected
-
-
-
-                return false;
-            }
-        });*/
 
         // Add a marker in Sydney and move the camera
         LatLng actualLocation = new LatLng(40.45, -3.74);
