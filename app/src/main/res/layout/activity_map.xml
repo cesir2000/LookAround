@@ -7,15 +7,8 @@
     android:layout_height="match_parent">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="71dp">
 
-        <include layout="@layout/toolsbar" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <fragment xmlns:tools="http://schemas.android.com/tools"
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
@@ -58,20 +51,22 @@
                 android:id="@+id/radioButtonCoordinates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:background="@drawable/button_background1"
                 android:button="@null"
-                android:padding="5dp"
-                android:layout_margin="1dp"
+                android:fontFamily="@font/asul"
                 android:gravity="center"
+                android:padding="5dp"
                 android:text="Coordenadas" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioButtonLocationName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_background2"
                 android:layout_margin="1dp"
+                android:background="@drawable/button_background2"
                 android:button="@null"
+                android:fontFamily="@font/asul"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Nombre" />
@@ -79,10 +74,11 @@
 
         <TextView
             android:id="@+id/textViewErrorOnSearch"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/asul"
             android:padding="5dp"
             android:textColor="#FF1212"
             app:layout_constraintBottom_toBottomOf="@+id/RadGroup"

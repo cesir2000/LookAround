@@ -1,5 +1,7 @@
 package es.ucm.fdi.lookaround;
 
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
@@ -7,16 +9,25 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
+
+import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import android.widget.Toast;
+
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -36,6 +47,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private RadioButton radioButtonCoordinates;
     private TextView textErrorOnSearch;
     private Marker actualMarker;
+    private final LatLng[] coordinatesFromClick = new LatLng[1];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,7 +151,15 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         textErrorOnSearch.setText("No hay resultados, intenta de nuevo!");
                     }
                     else {
-                        Address address = addressList.get(0);
+                        Address address;
+                        if (addressList != null) {
+                            address = addressList.get(0);
+                        }
+                        else {
+                            textErrorOnSearch.setText("Error en la búsqueda, prueba de nuevo!");
+                            return false;
+                        }
+
                         textErrorOnSearch.setText("");
 
                         // on below line we are creating a variable for our location
@@ -146,10 +167,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
 
                         // on below line we are adding marker to that position.
-                        actualMarker = mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                        actualMarker = mMap.addMarker(new MarkerOptions().position(latLng).title(location).snippet("(Pulsa para ir a la pantalla de búsqueda con esta posición)"));
 
                         // below line is to animate camera to that position.
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+
                     }
 
                 }
@@ -177,28 +199,34 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(this)));
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(@NonNull LatLng latLng) {
+
+                if (actualMarker != null) {
+                    actualMarker.remove();
+                }
+                coordinatesFromClick[0] = latLng;
+                actualMarker = mMap.addMarker(new MarkerOptions().position(latLng).title(latLng+"").snippet("(Pulsa para ir a la pantalla de búsqueda con esta posición)"));
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            }
+        });
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(@NonNull Marker marker) {
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                Bundle bundle = new Bundle();
+                bundle.putString("Latitude", marker.getPosition().latitude+"");
+                bundle.putString("Longitude", marker.getPosition().longitude+"");
+                intent.putExtra("coordinates",bundle);
+                startActivity(intent);
+            }
+        });
 
         // Add a marker in Sydney and move the camera
         LatLng actualLocation = new LatLng(40.45, -3.74);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(actualLocation));
-    }
-
-    public void onHomeButtonClick(View view){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);    // To delete animation when changing screens
-        startActivity(intent);
-    }
-
-    public void onMapsButtonClick(View view){
-        Intent intent = new Intent(getApplicationContext(), MapActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
-    }
-
-    public void onSearchButtonClick(View view){
-        Intent intent = new Intent(this, SearchActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
     }
 }

@@ -52,9 +52,9 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void onSearchButtonClick(View view){
-        Intent intent = new Intent(this, SearchActivity.class);
+        /*Intent intent = new Intent(this, SearchActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
 }

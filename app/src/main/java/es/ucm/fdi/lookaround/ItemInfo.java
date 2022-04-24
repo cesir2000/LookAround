@@ -9,6 +9,8 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;*/
 
+import androidx.annotation.NonNull;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +21,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class ItemInfo implements Serializable {
     private String name;            // Name of the establishment
@@ -30,6 +39,8 @@ public class ItemInfo implements Serializable {
     private int totalRatings;    // Total ratings of the establishment
     private String timeWalking;     // Time to get to the establishment walking
     private String timeCar;         // Time to get to the establishment by car
+    private String latitude;
+    private String longitude;
 
     public static List<ItemInfo> fromJsonResponse(String s, String latitudeOrigin, String longitudeOrigin) {
         List<ItemInfo> itemList = new ArrayList<ItemInfo>();
@@ -44,17 +55,21 @@ public class ItemInfo implements Serializable {
                 tmpItem.name = itemsArray.getJSONObject(i).getString("name");
                 Log.d("JSONDataExtract","Name Extracted");
 
-                /*************************************************************************************************************************
                 // Get latitude and longitude for distance and time
                 String longitudeDestination, latitudeDestination;
 
                 longitudeDestination = itemsArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng");
                 latitudeDestination = itemsArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat");
+                tmpItem.longitude = longitudeDestination;
+                tmpItem.latitude = longitudeDestination;
                 Log.d("JSONDataExtract","Latitude and longitude Extracted");
 
+
                 // Get distance and time to the place
-                String responseDistanceTimeWalk = getDistance(latitudeOrigin, longitudeOrigin, latitudeDestination, longitudeDestination, "walking");
-                String responseDistanceTimeCar = getDistance(latitudeOrigin, longitudeOrigin, latitudeDestination, longitudeDestination, "driving");
+               /* CountDownLatch countDownLatch = new CountDownLatch(1);
+                String responseDistanceTimeWalk = getDistance(latitudeOrigin, longitudeOrigin, latitudeDestination, longitudeDestination, "walking",countDownLatch);
+                countDownLatch = new CountDownLatch(1);
+                String responseDistanceTimeCar = getDistance(latitudeOrigin, longitudeOrigin, latitudeDestination, longitudeDestination, "driving",countDownLatch);
 
 
                 // Walking
@@ -66,7 +81,7 @@ public class ItemInfo implements Serializable {
                 dist = new JSONObject(responseDistanceTimeCar);
                 distArray = dist.getJSONArray("rows");
                 tmpItem.timeCar = distArray.getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("duration").get("text").toString();
-                Log.d("JSONDataExtract","Walking and driving distance Extracted");
+                Log.d("JSONDataExtract","Walking and driving distance Extracted");*/
 
                 // Get boolean for place open or not
                 if (itemsArray.getJSONObject(i).has("opening_hours")) {
@@ -74,29 +89,34 @@ public class ItemInfo implements Serializable {
                 }
                 Log.d("JSONDataExtract","Open Extracted");
 
-                // Get place ID
-                tmpItem.placeId = itemsArray.getJSONObject(i).getString("place_id");
-                Log.d("JSONDataExtract","PlaceID Extracted");
+                if (itemsArray.getJSONObject(i).has("place_id")) {
+                    // Get place ID
+                    tmpItem.placeId = itemsArray.getJSONObject(i).getString("place_id");
+                    Log.d("JSONDataExtract", "PlaceID Extracted");
+                }
 
-                // Get price level
-                tmpItem.priceLevel = itemsArray.getJSONObject(i).getInt("price_level");
-                Log.d("JSONDataExtract","Price level Extracted");
+                if (itemsArray.getJSONObject(i).has("price_level")) {
+                    // Get price level
+                    tmpItem.priceLevel = itemsArray.getJSONObject(i).getInt("price_level");
+                    Log.d("JSONDataExtract", "Price level Extracted");
+                }
 
-                // Get place rating
-                tmpItem.rating = itemsArray.getJSONObject(i).getDouble("rating");
-                Log.d("JSONDataExtract","Rating Extracted");
+                if (itemsArray.getJSONObject(i).has("rating")) {
+                    // Get place rating
+                    tmpItem.rating = itemsArray.getJSONObject(i).getDouble("rating");
+                    Log.d("JSONDataExtract", "Rating Extracted");
+                }
+
 
                 // Get place total number of ratings
                 tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
                 Log.d("JSONDataExtract","Total user ratings Extracted");
-                *********************************************************************************************************************************/
-                tmpItem.name = "Restaurante";
-                tmpItem.distance = "12km";
-                tmpItem.rating=4.3;
-                tmpItem.totalRatings=43;
-                tmpItem.open=true;
-                tmpItem.timeCar = "2min";
-                tmpItem.timeWalking = "10min";
+
+                if (itemsArray.getJSONObject(i).has("user_ratings_total")) {
+                    // Get place total number of ratings
+                    tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
+                    Log.d("JSONDataExtract", "Total user ratings Extracted");
+                }
                 itemList.add(tmpItem);
             }
         } catch (JSONException e) {
@@ -105,9 +125,9 @@ public class ItemInfo implements Serializable {
         return itemList;
     }
 
-    /*public static String getDistance(String latitudeOrigin, String longitudeOrigin, String latitudeDestination, String longitudeDestination, String mode) {
+    public static String getDistance(String latitudeOrigin, String longitudeOrigin, String latitudeDestination, String longitudeDestination, String mode, CountDownLatch countDownLatch) {
         final String[] responseData = new String[1];
-        /*OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://maps.googleapis.com/maps/api/distancematrix/json" +
                         "?origins="+ latitudeOrigin + "%2C"+ longitudeOrigin+
@@ -117,23 +137,35 @@ public class ItemInfo implements Serializable {
                         "&key=").build();
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Request request, IOException e) {
-
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                responseData[0] = response.body().string();
+                countDownLatch.countDown();
             }
 
             @Override
-            public void onResponse(Response response) throws IOException {
-                responseData[0] = response.body().string();
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
             }
         });
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return responseData[0];
-    }*/
+    }
+
 
     /* Setters */
 
     public void setName(String name) { this.name = name; }
 
     public void setDistance(String distance) { this.distance = distance; }
+
+    public void setOpen(boolean open) { this.open = open; }
+
+
+    /* Setters */
 
     public void setOpen(boolean open) { this.open = open; }
 
@@ -169,6 +201,11 @@ public class ItemInfo implements Serializable {
     public String getTimeWalking(){return this.timeWalking;}
 
     public String getTimeCar() {return this.timeCar;}
+
+    public String getLatitude() {return this.latitude;}
+
+    public String getLongitude() {return this.longitude;}
+
 
 
 }
