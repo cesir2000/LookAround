@@ -253,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
         startActivity(intent);*/
     }
 

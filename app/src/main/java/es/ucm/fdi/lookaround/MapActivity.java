@@ -1,5 +1,6 @@
 package es.ucm.fdi.lookaround;
 
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
@@ -8,19 +9,25 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
+
 import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
+
 import android.widget.Toast;
+
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -41,6 +48,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private TextView textErrorOnSearch;
     private Marker actualMarker;
     private final LatLng[] coordinatesFromClick = new LatLng[1];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,6 +159,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             textErrorOnSearch.setText("Error en la búsqueda, prueba de nuevo!");
                             return false;
                         }
+
                         textErrorOnSearch.setText("");
 
                         // on below line we are creating a variable for our location
@@ -162,6 +171,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
                         // below line is to animate camera to that position.
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+
                     }
 
                 }
@@ -219,5 +229,4 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         LatLng actualLocation = new LatLng(40.45, -3.74);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(actualLocation));
     }
-
 }

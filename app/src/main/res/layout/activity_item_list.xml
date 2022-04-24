@@ -13,6 +13,108 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout4" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="0dp"
+        android:layout_height="320dp"
+        android:background="#4CAF50"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewItems"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editTextNumberDecimalFilterCar"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:hint="Tiempo en coche"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimalFilterWalking" />
+
+        <EditText
+            android:id="@+id/editTextNumberDecimalFilterRating"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="Rating"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimalFilter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextNumberDecimalFilterWalking"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="Tiempo a pie"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimalFilterCar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimalFilter" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="82dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="164dp"
+            android:layout_marginEnd="165dp"
+            android:layout_marginBottom="16dp"
+            android:background="#009688"
+            android:onClick="setFilters"
+            android:text="Filtrar"
+            android:textSize="12sp"
+            app:backgroundTint="#009688"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimalFilterCar" />
+
+        <EditText
+            android:id="@+id/editTextNumberDecimalFilter"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="Distancia"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimalFilterWalking"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimalFilterRating" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

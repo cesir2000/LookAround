@@ -55,7 +55,6 @@ public class ItemInfo implements Serializable {
                 tmpItem.name = itemsArray.getJSONObject(i).getString("name");
                 Log.d("JSONDataExtract","Name Extracted");
 
-
                 // Get latitude and longitude for distance and time
                 String longitudeDestination, latitudeDestination;
 
@@ -108,6 +107,11 @@ public class ItemInfo implements Serializable {
                     Log.d("JSONDataExtract", "Rating Extracted");
                 }
 
+
+                // Get place total number of ratings
+                tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
+                Log.d("JSONDataExtract","Total user ratings Extracted");
+
                 if (itemsArray.getJSONObject(i).has("user_ratings_total")) {
                     // Get place total number of ratings
                     tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
@@ -152,17 +156,14 @@ public class ItemInfo implements Serializable {
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    /* Setters */
 
-    public void setDistance(String distance) {
-        this.distance = distance;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public void setTitle(boolean open) {
-        this.open = open;
-    }
+    public void setDistance(String distance) { this.distance = distance; }
+
+    public void setOpen(boolean open) { this.open = open; }
+
 
     /* Setters */
 
@@ -176,7 +177,6 @@ public class ItemInfo implements Serializable {
     public void setRating(double rating) { this.rating = rating; }
 
     public void setTotalRatings(int totalRatings) { this.totalRatings = totalRatings; }
-
 
     public void setTimeWalking(String timeWalking) { this.timeWalking = timeWalking; }
 
@@ -205,6 +205,7 @@ public class ItemInfo implements Serializable {
     public String getLatitude() {return this.latitude;}
 
     public String getLongitude() {return this.longitude;}
+
 
 
 }

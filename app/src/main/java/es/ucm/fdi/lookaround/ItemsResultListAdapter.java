@@ -103,9 +103,15 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
 
         public void setTimeWalking(String walk_time) { timeWalkingView.setText(walk_time); }
 
+
         public void setTimeCar(String car_time) { timeCarView.setText(car_time); }
         
         public void setRating(double rating, int total_ratings) {  ratingView.setText(Double.toString(rating)+"("+total_ratings+")"); }
+
+        public void setOpen(boolean open) {
+            if(open) openView.setText("Abierto");
+            else openView.setText("Cerrado");
+        }
 
         public void setOpen(boolean open) {
             if(open) openView.setText("Abierto");

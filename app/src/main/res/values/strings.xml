@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">LookAround</string>
     <string name="title_activity_map">Map</string>
-    <string name="google_maps_key">AIzaSyBSsb0XpxkyPREzXjKjgACW652OyEIdDRA</string>
 </resources>
