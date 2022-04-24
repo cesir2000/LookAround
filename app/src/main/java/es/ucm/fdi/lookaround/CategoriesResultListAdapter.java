@@ -115,7 +115,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                                     "&location=" + latitude + "%2C" + longitude +
                                     "&radius="+distanceText+
                                     "&type=" + searchNames.get(categoryView.getText().toString()) +
-                                    "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
+                                    "&key=").build();
                     client.newCall(request).enqueue(new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
@@ -133,33 +133,14 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
 
                     /*itemsList = new ArrayList<ItemInfo>();
                     ItemInfo tmpItem = new ItemInfo();
-                    tmpItem.setName("Restaurante");
-                    tmpItem.setDistance("12");
+                    tmpItem.setName("Restaurantejsfj");
+                    tmpItem.setDistance("12km");
                     tmpItem.setRating(4.3);
                     tmpItem.setTotalRatings(43);
                     tmpItem.setOpen(true);
-                    tmpItem.setTimeCar("2");
-                    tmpItem.setTimeWalking("10");
-                    itemsList.add(tmpItem);
-                    ItemInfo tmpItem2 = new ItemInfo();
-                    tmpItem2.setName("Restaurante El Pepe");
-                    tmpItem2.setDistance("500");
-                    tmpItem2.setRating(3.4);
-                    tmpItem2.setTotalRatings(1120);
-                    tmpItem2.setOpen(false);
-                    tmpItem2.setTimeCar("5");
-                    tmpItem2.setTimeWalking("15");
-                    itemsList.add(tmpItem2);
-                    ItemInfo tmpItem3 = new ItemInfo();
-                    tmpItem3.setName("Lugar muy lejano");
-                    tmpItem3.setDistance("340");
-                    tmpItem3.setRating(1.1);
-                    tmpItem3.setTotalRatings(120);
-                    tmpItem3.setOpen(true);
-                    tmpItem3.setTimeCar("30");
-                    tmpItem3.setTimeWalking("1");
-                    itemsList.add(tmpItem3);
-                  */
+                    tmpItem.setTimeCar("2min");
+                    tmpItem.setTimeWalking("10min");
+                    itemsList.add(tmpItem);*/
 
                     // Wait for the request to finish
                     try {
@@ -167,6 +148,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+
                     Intent intentMain = new Intent(v.getContext(),
                             ItemListActivity.class);
                     intentMain.putExtra("itemsList", (Serializable) itemsList);
