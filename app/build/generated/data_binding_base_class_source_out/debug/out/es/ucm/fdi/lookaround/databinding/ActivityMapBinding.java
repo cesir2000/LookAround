@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatRadioButton;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
 import es.ucm.fdi.lookaround.R;
 import java.lang.NullPointerException;
@@ -26,10 +26,10 @@ public final class ActivityMapBinding implements ViewBinding {
   public final RadioGroup RadGroup;
 
   @NonNull
-  public final ConstraintLayout constraintLayout2;
+  public final SearchView idSearchView;
 
   @NonNull
-  public final SearchView idSearchView;
+  public final FragmentContainerView map;
 
   @NonNull
   public final AppCompatRadioButton radioButtonCoordinates;
@@ -41,14 +41,14 @@ public final class ActivityMapBinding implements ViewBinding {
   public final TextView textViewErrorOnSearch;
 
   private ActivityMapBinding(@NonNull RelativeLayout rootView, @NonNull RadioGroup RadGroup,
-      @NonNull ConstraintLayout constraintLayout2, @NonNull SearchView idSearchView,
+      @NonNull SearchView idSearchView, @NonNull FragmentContainerView map,
       @NonNull AppCompatRadioButton radioButtonCoordinates,
       @NonNull AppCompatRadioButton radioButtonLocationName,
       @NonNull TextView textViewErrorOnSearch) {
     this.rootView = rootView;
     this.RadGroup = RadGroup;
-    this.constraintLayout2 = constraintLayout2;
     this.idSearchView = idSearchView;
+    this.map = map;
     this.radioButtonCoordinates = radioButtonCoordinates;
     this.radioButtonLocationName = radioButtonLocationName;
     this.textViewErrorOnSearch = textViewErrorOnSearch;
@@ -87,15 +87,15 @@ public final class ActivityMapBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.constraintLayout2;
-      ConstraintLayout constraintLayout2 = rootView.findViewById(id);
-      if (constraintLayout2 == null) {
-        break missingId;
-      }
-
       id = R.id.idSearchView;
       SearchView idSearchView = rootView.findViewById(id);
       if (idSearchView == null) {
+        break missingId;
+      }
+
+      id = R.id.map;
+      FragmentContainerView map = rootView.findViewById(id);
+      if (map == null) {
         break missingId;
       }
 
@@ -117,8 +117,8 @@ public final class ActivityMapBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMapBinding((RelativeLayout) rootView, RadGroup, constraintLayout2,
-          idSearchView, radioButtonCoordinates, radioButtonLocationName, textViewErrorOnSearch);
+      return new ActivityMapBinding((RelativeLayout) rootView, RadGroup, idSearchView, map,
+          radioButtonCoordinates, radioButtonLocationName, textViewErrorOnSearch);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

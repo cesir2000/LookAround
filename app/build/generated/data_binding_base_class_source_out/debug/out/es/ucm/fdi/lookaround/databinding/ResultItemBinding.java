@@ -27,6 +27,9 @@ public final class ResultItemBinding implements ViewBinding {
   public final ImageView imageView;
 
   @NonNull
+  public final ImageView imageView2;
+
+  @NonNull
   public final ImageView imageViewCar;
 
   @NonNull
@@ -36,10 +39,10 @@ public final class ResultItemBinding implements ViewBinding {
   public final RelativeLayout relativeLayoutPlace;
 
   @NonNull
-  public final TextView textView2;
+  public final TextView textViewCar;
 
   @NonNull
-  public final TextView textViewCar;
+  public final TextView textViewDistanceContent;
 
   @NonNull
   public final TextView textViewOpen;
@@ -54,19 +57,20 @@ public final class ResultItemBinding implements ViewBinding {
   public final TextView textViewWalking;
 
   private ResultItemBinding(@NonNull CardView rootView, @NonNull CardView cv2,
-      @NonNull ImageView imageView, @NonNull ImageView imageViewCar,
+      @NonNull ImageView imageView, @NonNull ImageView imageView2, @NonNull ImageView imageViewCar,
       @NonNull ImageView imageViewWalking, @NonNull RelativeLayout relativeLayoutPlace,
-      @NonNull TextView textView2, @NonNull TextView textViewCar, @NonNull TextView textViewOpen,
-      @NonNull TextView textViewRating, @NonNull TextView textViewTitleContentPlace,
-      @NonNull TextView textViewWalking) {
+      @NonNull TextView textViewCar, @NonNull TextView textViewDistanceContent,
+      @NonNull TextView textViewOpen, @NonNull TextView textViewRating,
+      @NonNull TextView textViewTitleContentPlace, @NonNull TextView textViewWalking) {
     this.rootView = rootView;
     this.cv2 = cv2;
     this.imageView = imageView;
+    this.imageView2 = imageView2;
     this.imageViewCar = imageViewCar;
     this.imageViewWalking = imageViewWalking;
     this.relativeLayoutPlace = relativeLayoutPlace;
-    this.textView2 = textView2;
     this.textViewCar = textViewCar;
+    this.textViewDistanceContent = textViewDistanceContent;
     this.textViewOpen = textViewOpen;
     this.textViewRating = textViewRating;
     this.textViewTitleContentPlace = textViewTitleContentPlace;
@@ -108,6 +112,12 @@ public final class ResultItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imageView2;
+      ImageView imageView2 = rootView.findViewById(id);
+      if (imageView2 == null) {
+        break missingId;
+      }
+
       id = R.id.imageViewCar;
       ImageView imageViewCar = rootView.findViewById(id);
       if (imageViewCar == null) {
@@ -126,15 +136,15 @@ public final class ResultItemBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView2;
-      TextView textView2 = rootView.findViewById(id);
-      if (textView2 == null) {
-        break missingId;
-      }
-
       id = R.id.textViewCar;
       TextView textViewCar = rootView.findViewById(id);
       if (textViewCar == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewDistanceContent;
+      TextView textViewDistanceContent = rootView.findViewById(id);
+      if (textViewDistanceContent == null) {
         break missingId;
       }
 
@@ -162,8 +172,8 @@ public final class ResultItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ResultItemBinding((CardView) rootView, cv2, imageView, imageViewCar,
-          imageViewWalking, relativeLayoutPlace, textView2, textViewCar, textViewOpen,
+      return new ResultItemBinding((CardView) rootView, cv2, imageView, imageView2, imageViewCar,
+          imageViewWalking, relativeLayoutPlace, textViewCar, textViewDistanceContent, textViewOpen,
           textViewRating, textViewTitleContentPlace, textViewWalking);
     }
     String missingId = rootView.getResources().getResourceName(id);

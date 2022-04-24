@@ -4,6 +4,8 @@ package es.ucm.fdi.lookaround.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,12 +21,20 @@ public final class ActivityItemListBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final Button buttonFilter;
+
+  @NonNull
   public final RecyclerView recyclerViewItems;
 
-  private ActivityItemListBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView recyclerViewItems) {
+  @NonNull
+  public final TextView textView2;
+
+  private ActivityItemListBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonFilter,
+      @NonNull RecyclerView recyclerViewItems, @NonNull TextView textView2) {
     this.rootView = rootView;
+    this.buttonFilter = buttonFilter;
     this.recyclerViewItems = recyclerViewItems;
+    this.textView2 = textView2;
   }
 
   @Override
@@ -54,13 +64,26 @@ public final class ActivityItemListBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.buttonFilter;
+      Button buttonFilter = rootView.findViewById(id);
+      if (buttonFilter == null) {
+        break missingId;
+      }
+
       id = R.id.recyclerViewItems;
       RecyclerView recyclerViewItems = rootView.findViewById(id);
       if (recyclerViewItems == null) {
         break missingId;
       }
 
-      return new ActivityItemListBinding((ConstraintLayout) rootView, recyclerViewItems);
+      id = R.id.textView2;
+      TextView textView2 = rootView.findViewById(id);
+      if (textView2 == null) {
+        break missingId;
+      }
+
+      return new ActivityItemListBinding((ConstraintLayout) rootView, buttonFilter,
+          recyclerViewItems, textView2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
