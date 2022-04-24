@@ -167,8 +167,6 @@ public class ItemInfo implements Serializable {
 
     /* Setters */
 
-    public void setOpen(boolean open) { this.open = open; }
-
 
     public void setPlaceId(String placeId) { this.placeId = placeId; }
 

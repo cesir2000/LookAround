@@ -29,10 +29,19 @@ import java.util.Map;
 public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultListAdapter.ItemViewHolder>{
     private LayoutInflater mInflater;
     private ArrayList<ItemInfo> items;
+    private double distance;
+    private double timeCar;
+    private double timeWalking;
+    private double rating;
+
 
     public ItemsResultListAdapter(Context context, ArrayList<ItemInfo> items) {
         mInflater = LayoutInflater.from(context);
         this.items = items;
+        this.distance = -1;
+        this.timeCar = -1;
+        this.timeWalking = -1;
+        this.rating = -1;
     }
 
     @Override
@@ -45,11 +54,43 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
     @Override
     public void onBindViewHolder(ItemsResultListAdapter.ItemViewHolder holder, int position) {
         holder.setName(items.get(position).getName());
-        //holder.setDistance(items.get(position).getDistance());
-        holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
+        if (distance == -1) {
+            //holder.setDistance(items.get(position).getDistance());
+        }
+        else {
+            /*if (Double.parseDouble(items.get(position).getDistance()) <= distance) {
+                holder.setDistance(items.get(position).getDistance());
+            }*/
+        }
+        if (rating == -1) {
+            holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
+        }
+        else {
+            if (items.get(position).getRating() <= rating) {
+                holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
+            }
+        }
+
         holder.setOpen(items.get(position).getOpen());
-        //holder.setTimeCar(items.get(position).getTimeCar());
-        //holder.setTimeWalking(items.get(position).getTimeWalking());
+
+        if (timeCar == -1) {
+            //holder.setTimeCar(items.get(position).getTimeCar());
+        }
+        else {
+            /*if (Double.parseDouble(items.get(position).getTimeCar()) <= timeCar) {
+                holder.setTimeCar(items.get(position).getTimeCar());
+            }*/
+        }
+
+        if (timeWalking == -1) {
+            //holder.setTimeCar(items.get(position).getTimeCar());
+        }
+        else {
+            /*if (Double.parseDouble(items.get(position).getTimeWalking()) <= timeWalking) {
+                holder.setTimeWalking(items.get(position).getTimeWalking());
+            }*/
+        }
+
         holder.setPlaceId(items.get(position).getPlaceId());
         holder.setLatitude(items.get(position).getLatitude());
         holder.setLongitude(items.get(position).getLongitude());
@@ -58,6 +99,13 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setFilters(double distance, double timeCar, double timeWalking, double rating){
+        this.distance=distance;
+        this.timeCar=timeCar;
+        this.timeWalking=timeWalking;
+        this.rating=rating;
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -113,10 +161,7 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
             else openView.setText("Cerrado");
         }
 
-        public void setOpen(boolean open) {
-            if(open) openView.setText("Abierto");
-            else openView.setText("Cerrado");
-        }
+
 
         public void setPlaceId(String place_id) {
             this.place_id = place_id;
