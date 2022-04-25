@@ -81,9 +81,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         mLocationRequest = LocationRequest.create()
-                .setInterval(5)
-                .setFastestInterval(0)
-                .setMaxWaitTime(500)
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(10000)
+                .setFastestInterval(1000)
                 .setNumUpdates(1);
 
 

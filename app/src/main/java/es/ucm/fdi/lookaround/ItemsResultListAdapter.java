@@ -54,46 +54,14 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
     @Override
     public void onBindViewHolder(ItemsResultListAdapter.ItemViewHolder holder, int position) {
         holder.setName(items.get(position).getName());
-        if (distance == -1) {
-            //holder.setDistance(items.get(position).getDistance());
-        }
-        else {
-            /*if (Double.parseDouble(items.get(position).getDistance()) <= distance) {
-                holder.setDistance(items.get(position).getDistance());
-            }*/
-        }
-        if (rating == -1) {
-            holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
-        }
-        else {
-            if (items.get(position).getRating() <= rating) {
-                holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
-            }
-        }
-
+        //holder.setDistance(items.get(position).getDistance());
+        holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
         holder.setOpen(items.get(position).getOpen());
-
-        if (timeCar == -1) {
-            //holder.setTimeCar(items.get(position).getTimeCar());
-        }
-        else {
-            /*if (Double.parseDouble(items.get(position).getTimeCar()) <= timeCar) {
-                holder.setTimeCar(items.get(position).getTimeCar());
-            }*/
-        }
-
-        if (timeWalking == -1) {
-            //holder.setTimeCar(items.get(position).getTimeCar());
-        }
-        else {
-            /*if (Double.parseDouble(items.get(position).getTimeWalking()) <= timeWalking) {
-                holder.setTimeWalking(items.get(position).getTimeWalking());
-            }*/
-        }
-
-        holder.setPlaceId(items.get(position).getPlaceId());
         holder.setLatitude(items.get(position).getLatitude());
         holder.setLongitude(items.get(position).getLongitude());
+        holder.setPlaceId(items.get(position).getPlaceId());
+        //holder.setTimeCar(items.get(position).getTimeCar());
+        //holder.setTimeWalking(items.get(position).getTimeWalking());
     }
 
     @Override

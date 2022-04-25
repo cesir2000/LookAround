@@ -112,12 +112,6 @@ public class ItemInfo implements Serializable {
                     tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
                     Log.d("JSONDataExtract", "Total user ratings Extracted");
                 }
-
-                if (itemsArray.getJSONObject(i).has("user_ratings_total")) {
-                    // Get place total number of ratings
-                    tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
-                    Log.d("JSONDataExtract", "Total user ratings Extracted");
-                }
                 itemList.add(tmpItem);
             }
         } catch (JSONException e) {

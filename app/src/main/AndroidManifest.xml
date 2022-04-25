@@ -29,7 +29,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="APIKEY" />
+            android:value="${API_MAPS_KEY}" />
 
         <!-- Change it to the one in local.properties file -->
         <activity
