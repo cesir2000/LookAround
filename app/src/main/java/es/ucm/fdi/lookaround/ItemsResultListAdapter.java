@@ -2,6 +2,7 @@ package es.ucm.fdi.lookaround;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.util.Pair;
 
@@ -28,13 +29,19 @@ import java.util.Map;
 public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultListAdapter.ItemViewHolder>{
     private LayoutInflater mInflater;
     private ArrayList<ItemInfo> items;
-
     private double distance;
+    private double timeCar;
+    private double timeWalking;
+    private double rating;
+
 
     public ItemsResultListAdapter(Context context, ArrayList<ItemInfo> items) {
         mInflater = LayoutInflater.from(context);
         this.items = items;
-        this.distance=-1;
+        this.distance = -1;
+        this.timeCar = -1;
+        this.timeWalking = -1;
+        this.rating = -1;
     }
 
     @Override
@@ -46,23 +53,27 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
 
     @Override
     public void onBindViewHolder(ItemsResultListAdapter.ItemViewHolder holder, int position) {
-        //Meter aqui los filtros
-        //double tmp = Double.parseDouble(items.get(position).getDistance());
-        //if(this.distance==-1 || (this.distance>0 && this.distance>=tmp)) {
-            Log.d(MainActivity.class.getSimpleName(), "Estoy dentro del if");
-            holder.setName(items.get(position).getName());
-            holder.setDistance(items.get(position).getDistance());
-            holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
-            holder.setOpen(items.get(position).getOpen());
-            holder.setTimeCar(items.get(position).getTimeCar());
-            holder.setTimeWalking(items.get(position).getTimeWalking());
-        //}
-        //Log.d(MainActivity.class.getSimpleName(), "Final del metodo onBindViewHolder");
+        holder.setName(items.get(position).getName());
+        //holder.setDistance(items.get(position).getDistance());
+        holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
+        holder.setOpen(items.get(position).getOpen());
+        holder.setLatitude(items.get(position).getLatitude());
+        holder.setLongitude(items.get(position).getLongitude());
+        holder.setPlaceId(items.get(position).getPlaceId());
+        //holder.setTimeCar(items.get(position).getTimeCar());
+        //holder.setTimeWalking(items.get(position).getTimeWalking());
     }
 
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setFilters(double distance, double timeCar, double timeWalking, double rating){
+        this.distance=distance;
+        this.timeCar=timeCar;
+        this.timeWalking=timeWalking;
+        this.rating=rating;
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -74,6 +85,9 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         private TextView timeWalkingView;
         private TextView ratingView;
         private TextView openView;
+        private String place_id;
+        private String latitude;
+        private String longitude;
 
 
         public ItemViewHolder(View itemView, ItemsResultListAdapter adapter) {
@@ -87,7 +101,13 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
             this.openView = itemView.findViewById(R.id.textViewOpen);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {}
+                public void onClick(View v) {
+                    Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+ latitude +","+longitude+"&query_place_id="+place_id);
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    v.getContext().startActivity(mapIntent);
+
+                }
             });
         }
 
@@ -99,6 +119,7 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
 
         public void setTimeWalking(String walk_time) { timeWalkingView.setText(walk_time); }
 
+
         public void setTimeCar(String car_time) { timeCarView.setText(car_time); }
         
         public void setRating(double rating, int total_ratings) {  ratingView.setText(Double.toString(rating)+"("+total_ratings+")"); }
@@ -109,10 +130,18 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         }
 
 
-    }
 
-    public void setFilters(double distance, double timeCar, double timeWalking, double rating){
-        this.distance=distance;
+        public void setPlaceId(String place_id) {
+            this.place_id = place_id;
+        }
+
+        public void setLatitude(String latitude) {
+            this.latitude = latitude;
+        }
+
+        public void setLongitude(String longitude) {
+            this.longitude = longitude;
+        }
     }
 
 }

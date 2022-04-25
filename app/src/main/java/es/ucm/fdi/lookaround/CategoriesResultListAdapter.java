@@ -26,6 +26,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
 import okhttp3.Call;
@@ -107,7 +108,6 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
 
                     //https://developers.google.com/maps/documentation/places/web-service/search-nearby
                     //https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project api create account
-
                     CountDownLatch countDownLatch = new CountDownLatch(1);
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()

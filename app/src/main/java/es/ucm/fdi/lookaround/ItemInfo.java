@@ -109,8 +109,10 @@ public class ItemInfo implements Serializable {
 
 
                 // Get place total number of ratings
-                tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
-                Log.d("JSONDataExtract","Total user ratings Extracted");
+                if (itemsArray.getJSONObject(i).has("rating")) {
+                    tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
+                    Log.d("JSONDataExtract", "Total user ratings Extracted");
+                }
 
                 if (itemsArray.getJSONObject(i).has("user_ratings_total")) {
                     // Get place total number of ratings
@@ -166,8 +168,6 @@ public class ItemInfo implements Serializable {
 
 
     /* Setters */
-
-    public void setOpen(boolean open) { this.open = open; }
 
 
     public void setPlaceId(String placeId) { this.placeId = placeId; }
