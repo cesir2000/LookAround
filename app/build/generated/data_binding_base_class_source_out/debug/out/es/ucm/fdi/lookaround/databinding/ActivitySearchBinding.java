@@ -4,6 +4,7 @@ package es.ucm.fdi.lookaround.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import es.ucm.fdi.lookaround.R;
 import java.lang.NullPointerException;
@@ -22,6 +24,9 @@ public final class ActivitySearchBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final Button button;
+
+  @NonNull
   public final ConstraintLayout constraintLayout2;
 
   @NonNull
@@ -29,6 +34,9 @@ public final class ActivitySearchBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayout linearLayout;
+
+  @NonNull
+  public final RecyclerView searchRecyclerView;
 
   @NonNull
   public final SeekBar seekBar2;
@@ -39,21 +47,19 @@ public final class ActivitySearchBinding implements ViewBinding {
   @NonNull
   public final TextView textView5;
 
-  @NonNull
-  public final TextView textViewResult;
-
-  private ActivitySearchBinding(@NonNull ConstraintLayout rootView,
+  private ActivitySearchBinding(@NonNull ConstraintLayout rootView, @NonNull Button button,
       @NonNull ConstraintLayout constraintLayout2, @NonNull EditText editTextTextPlaceName,
-      @NonNull LinearLayout linearLayout, @NonNull SeekBar seekBar2, @NonNull TextView textView4,
-      @NonNull TextView textView5, @NonNull TextView textViewResult) {
+      @NonNull LinearLayout linearLayout, @NonNull RecyclerView searchRecyclerView,
+      @NonNull SeekBar seekBar2, @NonNull TextView textView4, @NonNull TextView textView5) {
     this.rootView = rootView;
+    this.button = button;
     this.constraintLayout2 = constraintLayout2;
     this.editTextTextPlaceName = editTextTextPlaceName;
     this.linearLayout = linearLayout;
+    this.searchRecyclerView = searchRecyclerView;
     this.seekBar2 = seekBar2;
     this.textView4 = textView4;
     this.textView5 = textView5;
-    this.textViewResult = textViewResult;
   }
 
   @Override
@@ -83,6 +89,12 @@ public final class ActivitySearchBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.button;
+      Button button = rootView.findViewById(id);
+      if (button == null) {
+        break missingId;
+      }
+
       id = R.id.constraintLayout2;
       ConstraintLayout constraintLayout2 = rootView.findViewById(id);
       if (constraintLayout2 == null) {
@@ -98,6 +110,12 @@ public final class ActivitySearchBinding implements ViewBinding {
       id = R.id.linearLayout;
       LinearLayout linearLayout = rootView.findViewById(id);
       if (linearLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.searchRecyclerView;
+      RecyclerView searchRecyclerView = rootView.findViewById(id);
+      if (searchRecyclerView == null) {
         break missingId;
       }
 
@@ -119,14 +137,8 @@ public final class ActivitySearchBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textViewResult;
-      TextView textViewResult = rootView.findViewById(id);
-      if (textViewResult == null) {
-        break missingId;
-      }
-
-      return new ActivitySearchBinding((ConstraintLayout) rootView, constraintLayout2,
-          editTextTextPlaceName, linearLayout, seekBar2, textView4, textView5, textViewResult);
+      return new ActivitySearchBinding((ConstraintLayout) rootView, button, constraintLayout2,
+          editTextTextPlaceName, linearLayout, searchRecyclerView, seekBar2, textView4, textView5);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

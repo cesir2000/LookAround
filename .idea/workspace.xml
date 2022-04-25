@@ -19,7 +19,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\cesir.DESKTOP-IAB7EFF\.android\avd\Pixel_4_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Zeus_\.android\avd\Pixel_2_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -75,7 +75,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.1065635586">
@@ -109,6 +109,7 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -163,26 +164,18 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1650538867281">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1650538867281" />
-    <state width="1493" height="193" key="GridCell.Tab.0.bottom" timestamp="1650541453978">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="193" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1650541453978" />
-    <state width="1493" height="193" key="GridCell.Tab.0.center" timestamp="1650541453978">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="193" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1650541453978" />
-    <state width="1493" height="193" key="GridCell.Tab.0.left" timestamp="1650541453977">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="193" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1650541453977" />
-    <state width="1493" height="193" key="GridCell.Tab.0.right" timestamp="1650541453978">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="193" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1650541453978" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/es/ucm/fdi/lookaround/SearchActivity.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -39,6 +39,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -266,7 +267,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public void onSearchButtonClick(View view){
         Intent intent = new Intent(this, SearchActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-
+        intent.putExtra("latitude", latitude);
+        intent.putExtra("longitude", longitude);
         startActivity(intent);
     }
 

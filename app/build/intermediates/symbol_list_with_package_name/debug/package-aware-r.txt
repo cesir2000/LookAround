@@ -2519,6 +2519,7 @@ drawable group_background
 drawable ic_beer_svgrepo_com
 drawable ic_car_svgrepo_com
 drawable ic_clock_black_24dp
+drawable ic_distance_to_travel_between_two_points_svgrepo_com
 drawable ic_dollar_euro_money_exchange_svgrepo_com
 drawable ic_home_svgrepo_com
 drawable ic_hotel_svgrepo_com
@@ -2685,6 +2686,8 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id button
+id buttonFilter
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2716,6 +2719,7 @@ id confirm_button
 id constraint
 id constraintLayout
 id constraintLayout2
+id constraintLayout4
 id container
 id content
 id contentPanel
@@ -2765,6 +2769,10 @@ id easeIn
 id easeInOut
 id easeOut
 id east
+id editTextNumberDecimalFilter
+id editTextNumberDecimalFilterCar
+id editTextNumberDecimalFilterRating
+id editTextNumberDecimalFilterWalking
 id editTextTextPlaceName
 id edit_query
 id elastic
@@ -2815,6 +2823,7 @@ id imageButton2
 id imageButton3
 id imageButton4
 id imageView
+id imageView2
 id imageViewCar
 id imageViewSVGContent
 id imageViewWalking
@@ -2969,6 +2978,7 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id searchRecyclerView
 id search_badge
 id search_bar
 id search_button
@@ -3054,9 +3064,10 @@ id textView5
 id textViewCar
 id textViewDistanceContent
 id textViewErrorOnSearch
+id textViewInfoClick
+id textViewInfoName
 id textViewOpen
 id textViewRating
-id textViewResult
 id textViewTitleContent
 id textViewTitleContentPlace
 id textViewWalking
@@ -3216,6 +3227,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout infowindow_map
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3269,6 +3281,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout place_item
+layout pop_up_layout
 layout result_item
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
@@ -4546,7 +4559,7 @@ styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width 
 styleable LinearProgressIndicator indeterminateAnimationType indicatorDirectionLinear
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
-styleable MapAttrs backgroundColor ambientEnabled cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapId mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiScrollGesturesDuringRotateOrZoom uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
+styleable MapAttrs ambientEnabled backgroundColor cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapId mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiScrollGesturesDuringRotateOrZoom uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MaterialAlertDialog backgroundInsetBottom backgroundInsetEnd backgroundInsetStart backgroundInsetTop
 styleable MaterialAlertDialogTheme materialAlertDialogBodyTextStyle materialAlertDialogButtonSpacerVisibility materialAlertDialogTheme materialAlertDialogTitleIconStyle materialAlertDialogTitlePanelStyle materialAlertDialogTitleTextStyle
 styleable MaterialAutoCompleteTextView android_inputType
