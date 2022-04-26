@@ -1,5 +1,6 @@
 package es.ucm.fdi.lookaround;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,14 +45,16 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
     private String latitude;
     private String longitude;
     private TextView distance;
+    private ProgressBar progressBar;
 
-    public CategoriesResultListAdapter(Context context, ArrayList<Pair<String, Integer>> itemList, Map<String, String> searchNames, String latitude, String longitude, TextView distance) {
+    public CategoriesResultListAdapter(Context context, ArrayList<Pair<String, Integer>> itemList, Map<String, String> searchNames, String latitude, String longitude, TextView distance, ProgressBar progressBar) {
         mInflater = LayoutInflater.from(context);
         this.categoryList = itemList;
         this.searchNames = searchNames;
         this.latitude = latitude;
         this.longitude = longitude;
         this.distance = distance;
+        this.progressBar = progressBar;
     }
 
     @Override
@@ -97,7 +101,6 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     String distanceText;
                     if (!distance.getText().toString().equals("")) {
                         distanceText = Double.parseDouble(distance.getText().toString())*1000+"";

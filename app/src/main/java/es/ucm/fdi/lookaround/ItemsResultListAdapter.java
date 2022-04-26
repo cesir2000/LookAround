@@ -54,14 +54,14 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
     @Override
     public void onBindViewHolder(ItemsResultListAdapter.ItemViewHolder holder, int position) {
         holder.setName(items.get(position).getName());
-        //holder.setDistance(items.get(position).getDistance());
+        holder.setDistance(items.get(position).getDistance());
         holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
         holder.setOpen(items.get(position).getOpen());
         holder.setLatitude(items.get(position).getLatitude());
         holder.setLongitude(items.get(position).getLongitude());
         holder.setPlaceId(items.get(position).getPlaceId());
-        //holder.setTimeCar(items.get(position).getTimeCar());
-        //holder.setTimeWalking(items.get(position).getTimeWalking());
+        holder.setTimeCar(items.get(position).getTimeCar());
+        holder.setTimeWalking(items.get(position).getTimeWalking());
     }
 
     @Override
