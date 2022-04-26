@@ -1,5 +1,6 @@
 package es.ucm.fdi.lookaround;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -8,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -98,9 +100,9 @@ public class ItemListActivity extends AppCompatActivity {
         EditText filterCar = view.findViewById(R.id.editTextNumberDecimalFilterCar);
         EditText filterRating = view.findViewById(R.id.editTextNumberDecimalFilterRating);
         EditText filterWalking = view.findViewById(R.id.editTextNumberDecimalFilterWalking);
-        double distance;
-        double timeCar;
-        double timeWalking;
+        double distance = -1;
+        double timeCar = -1;
+        double timeWalking = -1;
         double rating;
         if(filterDistance.getText().toString().isEmpty()) distance = -1;
         else distance = Double.parseDouble(filterDistance.getText().toString());
@@ -113,10 +115,9 @@ public class ItemListActivity extends AppCompatActivity {
 
         ArrayList<ItemInfo> tmpList = new ArrayList<>();
         for(int i = 0; i < itemsList.size(); i++){
-            if((distance == -1 || distance >= Double.parseDouble(itemsList.get(i).getDistance().substring(0, itemsList.get(i).getDistance().indexOf(","))
-                    +"."+itemsList.get(i).getDistance().substring(itemsList.get(i).getDistance().indexOf(",")+1,itemsList.get(i).getDistance().indexOf(" ")))) &&
-                    (timeCar == -1 || timeCar >= Double.parseDouble(itemsList.get(i).getTimeCar().substring(0, itemsList.get(i).getTimeCar().indexOf(" "))))&&
-                    (timeWalking == -1 || timeWalking >= Double.parseDouble(itemsList.get(i).getTimeWalking().substring(0, itemsList.get(i).getTimeWalking().indexOf(" "))))&&
+            if((distance == -1 || distance >= Double.parseDouble(itemsList.get(i).getDistance())) &&
+                    (timeCar == -1 || timeCar >= Double.parseDouble(itemsList.get(i).getTimeCar()))&&
+                    (timeWalking == -1 || timeWalking >= Double.parseDouble(itemsList.get(i).getTimeWalking()))&&
                     (rating == -1 || rating <= itemsList.get(i).getRating())
             )
                 tmpList.add(itemsList.get(i));
@@ -128,6 +129,9 @@ public class ItemListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-
+    public void setFavorite(View view){
+        ImageView favorite = findViewById(R.id.imageViewFavorite);
+        favorite.setImageResource(R.drawable.ic_heart_filled_svgrepo_com);
+    }
 
 }
