@@ -172,6 +172,17 @@
                 android:layout_toEndOf="@+id/textViewCar"
                 app:srcCompat="@drawable/ic_distance_to_travel_between_two_points_svgrepo_com" />
 
+            <ImageView
+                android:id="@+id/imageViewFavorite"
+                android:layout_width="28dp"
+                android:layout_height="24dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="setFavorite"
+                app:srcCompat="@drawable/ic_heart_svgrepo_com" />
+
         </RelativeLayout>
 
 
