@@ -4,7 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -16,6 +15,8 @@ import android.provider.Settings;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,25 +26,16 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
@@ -59,20 +51,50 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private LocationSettingsRequest.Builder requestBuilder;
     private LocationRequest mLocationRequest;
     private TextView distanceText;
+    private int distance;
+    private SeekBar distanceBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mLocationRequest = LocationRequest.create()
+                .setInterval(10000)
+                .setFastestInterval(1000)
+                .setNumUpdates(1);
+
+        getLocation(); // Method to get location of the user
         setContentView(R.layout.activity_main);
         // Names for the cards
         ArrayList<Pair<String, Integer>> categories = createCategories();    // Create all category names and vector images that are going to be shown on cards
         Map<String, String> searchNames = createSearchNamesDict();          // Create a dict to map card names with search names of Google API
-        distanceText = findViewById(R.id.distanceText);
+        distanceText = findViewById(R.id.textViewDistance);
+        distanceBar = findViewById(R.id.seekBar3);
+        distanceBar.setProgress(0);
+        distanceBar.setMax(50);
+        distanceText.setText(0 + " Km.");
+        distanceBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                distance = progress*1000;
+                distanceText.setText(progress + " Km.");
+                categoriesAdapter.setDistance(distance);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         // Recycler view
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        categoriesAdapter = new CategoriesResultListAdapter(this, categories, searchNames, latitude, longitude, distanceText);
+        categoriesAdapter = new CategoriesResultListAdapter(this, categories, searchNames, latitude, longitude, distance);
         categoriesAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(categoriesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -80,14 +102,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         // Get user last known location
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        mLocationRequest = LocationRequest.create()
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(10000)
-                .setFastestInterval(1000)
-                .setNumUpdates(1);
 
-
-        getLocation(); // Method to get location of the user
         Log.d("MainActivityLog","End of onCreate()");
     }
 

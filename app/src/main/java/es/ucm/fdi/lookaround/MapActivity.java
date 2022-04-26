@@ -217,10 +217,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             public void onInfoWindowClick(@NonNull Marker marker) {
                 Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                Bundle bundle = new Bundle();
-                bundle.putString("Latitude", marker.getPosition().latitude+"");
-                bundle.putString("Longitude", marker.getPosition().longitude+"");
-                intent.putExtra("coordinates",bundle);
+                intent.putExtra("latitude", marker.getPosition().latitude+"");
+                intent.putExtra("longitude", marker.getPosition().longitude+"");
                 startActivity(intent);
             }
         });

@@ -1,5 +1,6 @@
 package es.ucm.fdi.lookaround;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,9 +44,9 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
     private Map<String, String> searchNames;
     private String latitude;
     private String longitude;
-    private TextView distance;
+    private int distance;
 
-    public CategoriesResultListAdapter(Context context, ArrayList<Pair<String, Integer>> itemList, Map<String, String> searchNames, String latitude, String longitude, TextView distance) {
+    public CategoriesResultListAdapter(Context context, ArrayList<Pair<String, Integer>> itemList, Map<String, String> searchNames, String latitude, String longitude, int distance) {
         mInflater = LayoutInflater.from(context);
         this.categoryList = itemList;
         this.searchNames = searchNames;
@@ -73,9 +75,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
         return categoryList.size();
     }
 
-    public void setBooksData(ArrayList<Pair<String, Integer>> data) {
-        this.categoryList = data;
-    }
+    public void setDistance(int distance){this.distance = distance;}
 
     public void setLocation(String latitude, String longitude) {this.longitude = longitude; this.latitude = latitude;}
 
@@ -97,14 +97,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     String distanceText;
-                    if (!distance.getText().toString().equals("")) {
-                        distanceText = Double.parseDouble(distance.getText().toString())*1000+"";
-                    }
-                    else {
-                        distanceText = "10000";  // Default distance set to 10km
-                    }
 
                     //https://developers.google.com/maps/documentation/places/web-service/search-nearby
                     //https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project api create account
@@ -113,7 +106,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                     Request request = new Request.Builder()
                             .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
                                     "&location=" + latitude + "%2C" + longitude +
-                                    "&radius="+distanceText+
+                                    "&radius="+distance+
                                     "&type=" + searchNames.get(categoryView.getText().toString()) +
                                     "&key=").build();
                     client.newCall(request).enqueue(new Callback() {
@@ -125,6 +118,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
                             String responseData = response.body().string();
+                            Log.d("RequestLog", latitude+" "+longitude + " "+ distance);
                             itemsList = ItemInfo.fromJsonResponse(responseData, latitude, longitude);
                             countDownLatch.countDown();
                         }

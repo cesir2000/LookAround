@@ -7,27 +7,43 @@
 
     <EditText
         android:id="@+id/editTextTextPlaceName"
-        android:layout_width="280dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/group_background"
         android:ems="10"
-        android:hint="Name of place to find"
+        android:fontFamily="@font/asul"
+        android:hint="Nombre del lugar"
         android:inputType="textPersonName"
         android:padding="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="71dp"
+
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <include layout="@layout/toolsbar" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/group_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/toolsbar"></include>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -44,8 +60,9 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Distancia (Km.)" />
+            android:fontFamily="@font/asul"
+            android:padding="7dp"
+            android:text="Distancia" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,44 +70,75 @@
             android:orientation="horizontal">
 
             <SeekBar
-                android:id="@+id/seekBar2"
-                android:layout_width="206dp"
+                android:id="@+id/seekBar3"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:padding="5dp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/textViewDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/asul"
                 android:padding="5dp" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchRecyclerView"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:padding="5dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/group_background"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:text="Search"
+        android:fontFamily="@font/asul"
         android:onClick="onSearchPlacesButtonClick"
+        android:text="Search"
+        app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPlaceName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPlaceName"
         app:layout_constraintTop_toTopOf="@+id/editTextTextPlaceName" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/group_background"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/asul" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

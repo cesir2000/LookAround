@@ -53,7 +53,7 @@ public class ItemInfo implements Serializable {
 
                 // Name of the place
                 tmpItem.name = itemsArray.getJSONObject(i).getString("name");
-                Log.d("JSONDataExtract","Name Extracted");
+
 
                 // Get latitude and longitude for distance and time
                 String longitudeDestination, latitudeDestination;
@@ -62,11 +62,11 @@ public class ItemInfo implements Serializable {
                 latitudeDestination = itemsArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat");
                 tmpItem.longitude = longitudeDestination;
                 tmpItem.latitude = longitudeDestination;
-                Log.d("JSONDataExtract","Latitude and longitude Extracted");
+
 
 
                 // Get distance and time to the place
-               /* CountDownLatch countDownLatch = new CountDownLatch(1);
+                CountDownLatch countDownLatch = new CountDownLatch(1);
                 String responseDistanceTimeWalk = getDistance(latitudeOrigin, longitudeOrigin, latitudeDestination, longitudeDestination, "walking",countDownLatch);
                 countDownLatch = new CountDownLatch(1);
                 String responseDistanceTimeCar = getDistance(latitudeOrigin, longitudeOrigin, latitudeDestination, longitudeDestination, "driving",countDownLatch);
@@ -81,42 +81,44 @@ public class ItemInfo implements Serializable {
                 dist = new JSONObject(responseDistanceTimeCar);
                 distArray = dist.getJSONArray("rows");
                 tmpItem.timeCar = distArray.getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("duration").get("text").toString();
-                Log.d("JSONDataExtract","Walking and driving distance Extracted");*/
+
 
                 // Get boolean for place open or not
                 if (itemsArray.getJSONObject(i).has("opening_hours")) {
                     tmpItem.open = itemsArray.getJSONObject(i).getJSONObject("opening_hours").getBoolean("open_now");
                 }
-                Log.d("JSONDataExtract","Open Extracted");
+
 
                 if (itemsArray.getJSONObject(i).has("place_id")) {
                     // Get place ID
                     tmpItem.placeId = itemsArray.getJSONObject(i).getString("place_id");
-                    Log.d("JSONDataExtract", "PlaceID Extracted");
+
                 }
 
                 if (itemsArray.getJSONObject(i).has("price_level")) {
                     // Get price level
                     tmpItem.priceLevel = itemsArray.getJSONObject(i).getInt("price_level");
-                    Log.d("JSONDataExtract", "Price level Extracted");
+
                 }
 
                 if (itemsArray.getJSONObject(i).has("rating")) {
                     // Get place rating
                     tmpItem.rating = itemsArray.getJSONObject(i).getDouble("rating");
-                    Log.d("JSONDataExtract", "Rating Extracted");
+
                 }
 
                 if (itemsArray.getJSONObject(i).has("user_ratings_total")) {
                     // Get place total number of ratings
                     tmpItem.totalRatings = itemsArray.getJSONObject(i).getInt("user_ratings_total");
-                    Log.d("JSONDataExtract", "Total user ratings Extracted");
+
                 }
                 itemList.add(tmpItem);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        Log.d("RequestLog", "Información de la API extraída");
+        Log.d("RequestLog",itemList.size()+"");
         return itemList;
     }
 
