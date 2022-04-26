@@ -44,6 +44,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
     private Map<String, String> searchNames;
     private String latitude;
     private String longitude;
+
     private int distance;
 
     public CategoriesResultListAdapter(Context context, ArrayList<Pair<String, Integer>> itemList, Map<String, String> searchNames, String latitude, String longitude, int distance) {
@@ -53,6 +54,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
         this.latitude = latitude;
         this.longitude = longitude;
         this.distance = distance;
+        this.progressBar = progressBar;
     }
 
     @Override

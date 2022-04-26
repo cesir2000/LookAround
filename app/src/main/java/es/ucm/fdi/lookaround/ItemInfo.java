@@ -118,7 +118,6 @@ public class ItemInfo implements Serializable {
             e.printStackTrace();
         }
         Log.d("RequestLog", "Información de la API extraída");
-        Log.d("RequestLog",itemList.size()+"");
         return itemList;
     }
 
