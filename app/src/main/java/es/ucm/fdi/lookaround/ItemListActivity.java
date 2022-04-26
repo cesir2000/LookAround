@@ -100,9 +100,9 @@ public class ItemListActivity extends AppCompatActivity {
         EditText filterCar = view.findViewById(R.id.editTextNumberDecimalFilterCar);
         EditText filterRating = view.findViewById(R.id.editTextNumberDecimalFilterRating);
         EditText filterWalking = view.findViewById(R.id.editTextNumberDecimalFilterWalking);
-        double distance = -1;
-        double timeCar = -1;
-        double timeWalking = -1;
+        double distance;
+        double timeCar;
+        double timeWalking;
         double rating;
         if(filterDistance.getText().toString().isEmpty()) distance = -1;
         else distance = Double.parseDouble(filterDistance.getText().toString());
@@ -115,9 +115,10 @@ public class ItemListActivity extends AppCompatActivity {
 
         ArrayList<ItemInfo> tmpList = new ArrayList<>();
         for(int i = 0; i < itemsList.size(); i++){
-            if((distance == -1 || distance >= Double.parseDouble(itemsList.get(i).getDistance())) &&
-                    (timeCar == -1 || timeCar >= Double.parseDouble(itemsList.get(i).getTimeCar()))&&
-                    (timeWalking == -1 || timeWalking >= Double.parseDouble(itemsList.get(i).getTimeWalking()))&&
+            if((distance == -1 || distance >= Double.parseDouble(itemsList.get(i).getDistance().substring(0, itemsList.get(i).getDistance().indexOf(","))
+                    +"."+itemsList.get(i).getDistance().substring(itemsList.get(i).getDistance().indexOf(",")+1,itemsList.get(i).getDistance().indexOf(" ")))) &&
+                    (timeCar == -1 || timeCar >= Double.parseDouble(itemsList.get(i).getTimeCar().substring(0, itemsList.get(i).getTimeCar().indexOf(" "))))&&
+                    (timeWalking == -1 || timeWalking >= Double.parseDouble(itemsList.get(i).getTimeWalking().substring(0, itemsList.get(i).getTimeWalking().indexOf(" "))))&&
                     (rating == -1 || rating <= itemsList.get(i).getRating())
             )
                 tmpList.add(itemsList.get(i));

@@ -16,6 +16,8 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,23 +52,51 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private LocationSettingsRequest.Builder requestBuilder;
     private LocationRequest mLocationRequest;
     private TextView distanceText;
-    private ProgressBar progressBar;
+    private int distance;
+    private SeekBar distanceBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mLocationRequest = LocationRequest.create()
+                .setInterval(10000)
+                .setFastestInterval(1000)
+                .setNumUpdates(1);
+
+        getLocation(); // Method to get location of the user
         setContentView(R.layout.activity_main);
         // Names for the cards
         ArrayList<Pair<String, Integer>> categories = createCategories();    // Create all category names and vector images that are going to be shown on cards
         Map<String, String> searchNames = createSearchNamesDict();          // Create a dict to map card names with search names of Google API
-        distanceText = findViewById(R.id.distanceText);
+        distanceText = findViewById(R.id.textViewDistance);
+        distanceBar = findViewById(R.id.seekBar3);
+        distanceBar.setProgress(0);
+        distanceBar.setMax(50);
+        distanceText.setText(0 + " Km.");
+        distanceBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                distance = progress*1000;
+                distanceText.setText(progress + " Km.");
+                categoriesAdapter.setDistance(distance);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         // Recycler view
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar3);
-        progressBar.setVisibility(View.INVISIBLE);
-        categoriesAdapter = new CategoriesResultListAdapter(this, categories, searchNames, latitude, longitude, distanceText, progressBar);
+        categoriesAdapter = new CategoriesResultListAdapter(this, categories, searchNames, latitude, longitude, distance);
+
         categoriesAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(categoriesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -74,14 +104,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         // Get user last known location
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        mLocationRequest = LocationRequest.create()
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(10000)
-                .setFastestInterval(1000)
-                .setNumUpdates(1);
 
-
-        getLocation(); // Method to get location of the user
         Log.d("MainActivityLog","End of onCreate()");
     }
 
