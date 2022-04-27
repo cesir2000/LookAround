@@ -1,6 +1,8 @@
 package es.ucm.fdi.lookaround;
 
 import android.content.ClipData;
+import android.os.Parcelable;
+import android.util.Base64;
 import android.util.Log;
 
 
@@ -15,7 +17,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -207,6 +213,34 @@ public class ItemInfo implements Serializable {
     public String getLatitude() {return this.latitude;}
 
     public String getLongitude() {return this.longitude;}
+
+    // MG Testing
+    public static <T extends Serializable> T stringToObjectS(String string) {
+        byte[] bytes = Base64.decode(string, 0);
+        T object = null;
+        try {
+            ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(bytes));
+            object = (T) objectInputStream.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return object;
+    }
+
+    public static String objectToString(Serializable object) {
+        String encoded = null;
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(object);
+            objectOutputStream.close();
+            encoded = new String(Base64.encodeToString(byteArrayOutputStream.toByteArray(), 0));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return encoded;
+    }
+    //
 
 
 

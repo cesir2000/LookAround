@@ -5,7 +5,7 @@
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="19"
+8        android:minSdkVersion="21"
 8-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="31" />
 9-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml
@@ -62,8 +62,8 @@
 40        android:supportsRtl="true"
 40-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:19:9-35
 41        android:testOnly="true"
-42        android:theme="@style/Theme.LookAround" >
-42-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:20:9-48
+42        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+42-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:20:9-65
 43
 44        <!--
 45             The API key for Google Maps-based APIs is defined as a string resource.
@@ -74,11 +74,11 @@
 50             You can define the keys for the debug and release targets in src/debug/ and src/release/.
 51        -->
 52        <meta-data
-52-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:30:9-32:71
+52-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:30:9-32:55
 53            android:name="com.google.android.geo.API_KEY"
 53-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:31:13-58
-54            android:value="AIzaSyBSsb0XpxkyPREzXjKjgACW652OyEIdDRA" />
-54-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:32:13-68
+54            android:value="@string/google_maps_key" />
+54-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:32:13-52
 55
 56        <!-- Change it to the one in local.properties file -->
 57        <activity
@@ -110,7 +110,7 @@
 69            </intent-filter>
 70        </activity>
 71        <activity android:name="es.ucm.fdi.lookaround.SearchActivity" />
-71-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:49:9-61
+71-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:49:9-52
 71-->C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:49:19-49
 72        <!-- Needs to be explicitly declared on P+ -->
 73        <uses-library

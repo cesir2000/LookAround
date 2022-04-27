@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -27,6 +28,9 @@ public final class CategoryItemBinding implements ViewBinding {
   public final ImageView imageViewSVGContent;
 
   @NonNull
+  public final ProgressBar progressBar4;
+
+  @NonNull
   public final RelativeLayout relativeLayout;
 
   @NonNull
@@ -36,11 +40,13 @@ public final class CategoryItemBinding implements ViewBinding {
   public final TextView textViewTitleContent;
 
   private CategoryItemBinding(@NonNull CardView rootView, @NonNull CardView cv,
-      @NonNull ImageView imageViewSVGContent, @NonNull RelativeLayout relativeLayout,
-      @NonNull RelativeLayout relativeLayout2, @NonNull TextView textViewTitleContent) {
+      @NonNull ImageView imageViewSVGContent, @NonNull ProgressBar progressBar4,
+      @NonNull RelativeLayout relativeLayout, @NonNull RelativeLayout relativeLayout2,
+      @NonNull TextView textViewTitleContent) {
     this.rootView = rootView;
     this.cv = cv;
     this.imageViewSVGContent = imageViewSVGContent;
+    this.progressBar4 = progressBar4;
     this.relativeLayout = relativeLayout;
     this.relativeLayout2 = relativeLayout2;
     this.textViewTitleContent = textViewTitleContent;
@@ -81,6 +87,12 @@ public final class CategoryItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressBar4;
+      ProgressBar progressBar4 = rootView.findViewById(id);
+      if (progressBar4 == null) {
+        break missingId;
+      }
+
       id = R.id.relativeLayout;
       RelativeLayout relativeLayout = rootView.findViewById(id);
       if (relativeLayout == null) {
@@ -99,8 +111,8 @@ public final class CategoryItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new CategoryItemBinding((CardView) rootView, cv, imageViewSVGContent, relativeLayout,
-          relativeLayout2, textViewTitleContent);
+      return new CategoryItemBinding((CardView) rootView, cv, imageViewSVGContent, progressBar4,
+          relativeLayout, relativeLayout2, textViewTitleContent);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

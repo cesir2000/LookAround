@@ -4,7 +4,8 @@ package es.ucm.fdi.lookaround.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,24 +28,32 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ConstraintLayout constraintLayout2;
 
   @NonNull
-  public final EditText distanceText;
+  public final LinearLayout linearLayout;
 
   @NonNull
   public final RecyclerView recyclerView;
 
   @NonNull
-  public final TextView textView;
+  public final SeekBar seekBar3;
+
+  @NonNull
+  public final TextView textView4;
+
+  @NonNull
+  public final TextView textViewDistance;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull ConstraintLayout constraintLayout, @NonNull ConstraintLayout constraintLayout2,
-      @NonNull EditText distanceText, @NonNull RecyclerView recyclerView,
-      @NonNull TextView textView) {
+      @NonNull LinearLayout linearLayout, @NonNull RecyclerView recyclerView,
+      @NonNull SeekBar seekBar3, @NonNull TextView textView4, @NonNull TextView textViewDistance) {
     this.rootView = rootView;
     this.constraintLayout = constraintLayout;
     this.constraintLayout2 = constraintLayout2;
-    this.distanceText = distanceText;
+    this.linearLayout = linearLayout;
     this.recyclerView = recyclerView;
-    this.textView = textView;
+    this.seekBar3 = seekBar3;
+    this.textView4 = textView4;
+    this.textViewDistance = textViewDistance;
   }
 
   @Override
@@ -86,9 +95,9 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.distanceText;
-      EditText distanceText = rootView.findViewById(id);
-      if (distanceText == null) {
+      id = R.id.linearLayout;
+      LinearLayout linearLayout = rootView.findViewById(id);
+      if (linearLayout == null) {
         break missingId;
       }
 
@@ -98,14 +107,26 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView;
-      TextView textView = rootView.findViewById(id);
-      if (textView == null) {
+      id = R.id.seekBar3;
+      SeekBar seekBar3 = rootView.findViewById(id);
+      if (seekBar3 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView4;
+      TextView textView4 = rootView.findViewById(id);
+      if (textView4 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewDistance;
+      TextView textViewDistance = rootView.findViewById(id);
+      if (textViewDistance == null) {
         break missingId;
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, constraintLayout,
-          constraintLayout2, distanceText, recyclerView, textView);
+          constraintLayout2, linearLayout, recyclerView, seekBar3, textView4, textViewDistance);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

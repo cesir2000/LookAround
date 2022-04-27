@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,30 +38,44 @@ public final class ActivitySearchBinding implements ViewBinding {
   public final LinearLayout linearLayout;
 
   @NonNull
+  public final LinearLayout linearLayout2;
+
+  @NonNull
+  public final ProgressBar progressBar;
+
+  @NonNull
   public final RecyclerView searchRecyclerView;
 
   @NonNull
-  public final SeekBar seekBar2;
+  public final SeekBar seekBar3;
+
+  @NonNull
+  public final Spinner spinner;
 
   @NonNull
   public final TextView textView4;
 
   @NonNull
-  public final TextView textView5;
+  public final TextView textViewDistance;
 
   private ActivitySearchBinding(@NonNull ConstraintLayout rootView, @NonNull Button button,
       @NonNull ConstraintLayout constraintLayout2, @NonNull EditText editTextTextPlaceName,
-      @NonNull LinearLayout linearLayout, @NonNull RecyclerView searchRecyclerView,
-      @NonNull SeekBar seekBar2, @NonNull TextView textView4, @NonNull TextView textView5) {
+      @NonNull LinearLayout linearLayout, @NonNull LinearLayout linearLayout2,
+      @NonNull ProgressBar progressBar, @NonNull RecyclerView searchRecyclerView,
+      @NonNull SeekBar seekBar3, @NonNull Spinner spinner, @NonNull TextView textView4,
+      @NonNull TextView textViewDistance) {
     this.rootView = rootView;
     this.button = button;
     this.constraintLayout2 = constraintLayout2;
     this.editTextTextPlaceName = editTextTextPlaceName;
     this.linearLayout = linearLayout;
+    this.linearLayout2 = linearLayout2;
+    this.progressBar = progressBar;
     this.searchRecyclerView = searchRecyclerView;
-    this.seekBar2 = seekBar2;
+    this.seekBar3 = seekBar3;
+    this.spinner = spinner;
     this.textView4 = textView4;
-    this.textView5 = textView5;
+    this.textViewDistance = textViewDistance;
   }
 
   @Override
@@ -113,15 +129,33 @@ public final class ActivitySearchBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.linearLayout2;
+      LinearLayout linearLayout2 = rootView.findViewById(id);
+      if (linearLayout2 == null) {
+        break missingId;
+      }
+
+      id = R.id.progressBar;
+      ProgressBar progressBar = rootView.findViewById(id);
+      if (progressBar == null) {
+        break missingId;
+      }
+
       id = R.id.searchRecyclerView;
       RecyclerView searchRecyclerView = rootView.findViewById(id);
       if (searchRecyclerView == null) {
         break missingId;
       }
 
-      id = R.id.seekBar2;
-      SeekBar seekBar2 = rootView.findViewById(id);
-      if (seekBar2 == null) {
+      id = R.id.seekBar3;
+      SeekBar seekBar3 = rootView.findViewById(id);
+      if (seekBar3 == null) {
+        break missingId;
+      }
+
+      id = R.id.spinner;
+      Spinner spinner = rootView.findViewById(id);
+      if (spinner == null) {
         break missingId;
       }
 
@@ -131,14 +165,15 @@ public final class ActivitySearchBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView5;
-      TextView textView5 = rootView.findViewById(id);
-      if (textView5 == null) {
+      id = R.id.textViewDistance;
+      TextView textViewDistance = rootView.findViewById(id);
+      if (textViewDistance == null) {
         break missingId;
       }
 
       return new ActivitySearchBinding((ConstraintLayout) rootView, button, constraintLayout2,
-          editTextTextPlaceName, linearLayout, searchRecyclerView, seekBar2, textView4, textView5);
+          editTextTextPlaceName, linearLayout, linearLayout2, progressBar, searchRecyclerView,
+          seekBar3, spinner, textView4, textViewDistance);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

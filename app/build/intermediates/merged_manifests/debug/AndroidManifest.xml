@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="21"
         android:targetSdkVersion="31" />
 
     <!--
@@ -39,7 +39,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.LookAround" >
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -51,7 +51,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBSsb0XpxkyPREzXjKjgACW652OyEIdDRA" />
+            android:value="@string/google_maps_key" />
 
         <!-- Change it to the one in local.properties file -->
         <activity
