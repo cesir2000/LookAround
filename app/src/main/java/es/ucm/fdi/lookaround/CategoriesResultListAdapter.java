@@ -3,6 +3,7 @@ package es.ucm.fdi.lookaround;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.util.Log;
 import android.util.Pair;
@@ -44,7 +45,6 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
     private Map<String, String> searchNames;
     private String latitude;
     private String longitude;
-
     private int distance;
 
     public CategoriesResultListAdapter(Context context, ArrayList<Pair<String, Integer>> itemList, Map<String, String> searchNames, String latitude, String longitude, int distance) {
@@ -54,7 +54,6 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
         this.latitude = latitude;
         this.longitude = longitude;
         this.distance = distance;
-        this.progressBar = progressBar;
     }
 
     @Override
@@ -83,17 +82,24 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
+        private Handler handler;
         private CategoriesResultListAdapter mAdapter;
         private ImageView imageView;
         private TextView categoryView;
         private List<ItemInfo> itemsList;
+        private ProgressBar progressBar;
 
 
         public ItemViewHolder(View itemView, CategoriesResultListAdapter adapter) {
             super(itemView);
             this.imageView=itemView.findViewById(R.id.imageViewSVGContent);
             this.categoryView = itemView.findViewById(R.id.textViewTitleContent);
+            this.progressBar = itemView.findViewById(R.id.progressBar4);
+            progressBar.setIndeterminate(true);
+            progressBar.setVisibility(View.INVISIBLE);
             this.mAdapter = adapter;
+            this.handler = new Handler();
+
 
             // Once one card of the categories is clicked, the searh by category is done and new activity is started with the data received
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -101,9 +107,21 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                 public void onClick(View v) {
                     String distanceText;
 
+                    new Thread(){
+                        @Override
+                        public void run() {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressBar.setVisibility(View.VISIBLE);
+                                }
+                            });
+                        }
+                    }.start();
+
                     //https://developers.google.com/maps/documentation/places/web-service/search-nearby
                     //https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project api create account
-                    CountDownLatch countDownLatch = new CountDownLatch(1);
+
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
                             .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
@@ -122,7 +140,24 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                             String responseData = response.body().string();
                             Log.d("RequestLog", latitude+" "+longitude + " "+ distance);
                             itemsList = ItemInfo.fromJsonResponse(responseData, latitude, longitude);
-                            countDownLatch.countDown();
+                            Intent intentMain = new Intent(v.getContext(),
+                                    ItemListActivity.class);
+                            intentMain.putExtra("itemsList", (Serializable) itemsList);
+                            v.getContext().startActivity(intentMain);
+                            Log.i("Content ", " Results Layout ");
+                            new Thread(){
+                                @Override
+                                public void run() {
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressBar.setVisibility(View.INVISIBLE);
+                                        }
+                                    });
+                                }
+                            }.start();
+
+
                         }
 
                     });
@@ -138,18 +173,6 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                     tmpItem.setTimeWalking("10min");
                     itemsList.add(tmpItem);*/
 
-                    // Wait for the request to finish
-                    try {
-                        countDownLatch.await();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    Intent intentMain = new Intent(v.getContext(),
-                            ItemListActivity.class);
-                    intentMain.putExtra("itemsList", (Serializable) itemsList);
-                    v.getContext().startActivity(intentMain);
-                    Log.i("Content ", " Results Layout ");
                 }
             });
         }

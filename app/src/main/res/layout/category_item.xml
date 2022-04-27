@@ -22,7 +22,7 @@
             android:id="@+id/relativeLayout2"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="#A4D6A4"
+            android:background="#D1FFCB"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/relativeLayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
             android:id="@+id/relativeLayout"
             android:layout_width="0dp"
             android:layout_height="80dp"
-            android:background="#A4D6A4"
+            android:background="#D1FFCB"
             android:padding="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,6 +78,17 @@
             </TextView>
 
         </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar4"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:indeterminateTint="#44FF00"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

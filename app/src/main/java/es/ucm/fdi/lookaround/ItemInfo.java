@@ -74,14 +74,21 @@ public class ItemInfo implements Serializable {
 
                 // Walking
                 JSONObject dist = new JSONObject(responseDistanceTimeWalk);
-                JSONArray distArray = dist.getJSONArray("rows");
-                tmpItem.distance = distArray.getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("distance").getString("text");
-                tmpItem.timeWalking = distArray.getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("duration").getString("text");
+                if (dist.has("rows")) {
+                    JSONArray distArray = dist.getJSONArray("rows");
+                    if (distArray.length() > 0) {
+                        tmpItem.distance = distArray.getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("distance").getString("text");
+                        tmpItem.timeWalking = distArray.getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("duration").getString("text");
+                    }
+                }
                 // By car
                 dist = new JSONObject(responseDistanceTimeCar);
-                distArray = dist.getJSONArray("rows");
-                tmpItem.timeCar = distArray.getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("duration").get("text").toString();
-
+                if (dist.has("rows")) {
+                    JSONArray distArray = dist.getJSONArray("rows");
+                    if (distArray.length() > 0) {
+                        tmpItem.timeCar = distArray.getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("duration").get("text").toString();
+                    }
+                }
 
                 // Get boolean for place open or not
                 if (itemsArray.getJSONObject(i).has("opening_hours")) {
@@ -118,6 +125,7 @@ public class ItemInfo implements Serializable {
             e.printStackTrace();
         }
         Log.d("RequestLog", "Información de la API extraída");
+        Log.d("RequestLog",itemList.size()+"");
         return itemList;
     }
 

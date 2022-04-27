@@ -17,7 +17,6 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
-
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,13 +42,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private static final int PERMISSION_ID = 44;
     private CategoriesResultListAdapter categoriesAdapter;
     private RecyclerView recyclerView;
-    private String[] cardNames = {"Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas"};
-    private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "hotel", "atm"};
+    private String[] cardNames = {"Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas", "Aeropuertos", "Atracciones", "Autobuses", "Rental", "Taxi"};
+    private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "lodging", "atm", "airport", "amusement_park", "bus_station", "car_rental", "taxi_stand"};
     String latitude;
     String longitude;
-    private int[] images = {R.drawable.ic_restaurant_svg, R.drawable.ic_museum_svgrepo_com, R.drawable.ic_public_park_svgrepo_com, R.drawable.ic_beer_svgrepo_com, R.drawable.ic_monument_14_svgrepo_com, R.drawable.ic_hotel_svgrepo_com, R.drawable.ic_dollar_euro_money_exchange_svgrepo_com};
+    private int[] images = {R.drawable.ic_restaurant_svg, R.drawable.ic_museum_svgrepo_com, R.drawable.ic_public_park_svgrepo_com, R.drawable.ic_beer_svgrepo_com,
+            R.drawable.ic_monument_14_svgrepo_com, R.drawable.ic_hotel_svgrepo_com, R.drawable.ic_dollar_euro_money_exchange_svgrepo_com, R.drawable.ic_plane_svgrepo_com,
+            R.drawable.ic_amusement_park_svgrepo_com, R.drawable.ic_bus_svgrepo_com, R.drawable.ic_car_svgrepo_com, R.drawable.ic_taxi_svgrepo_com};
     private FusedLocationProviderClient mFusedLocationClient;
-    private LocationSettingsRequest.Builder requestBuilder;
     private LocationRequest mLocationRequest;
     private TextView distanceText;
     private int distance;
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         // Recycler view
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         categoriesAdapter = new CategoriesResultListAdapter(this, categories, searchNames, latitude, longitude, distance);
-
         categoriesAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(categoriesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         // Get user last known location
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -141,50 +141,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 };
 
                 LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest, mLocationCallback, null);
-
-                /*mFusedLocationClient.getLastLocation()
-                        .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                            @Override
-                            public void onSuccess(Location location) {
-                                // Got last known location. In some rare situations this can be null.
-                                if (location != null) {
-
-                                }
-                            }
-                        });*/
-                /*requestBuilder = new LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest);
-                Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(this).checkLocationSettings(requestBuilder.build());
-                result.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
-                    @Override
-                    public void onComplete(Task<LocationSettingsResponse> task) {
-                        try {
-                            LocationSettingsResponse response = task.getResult(ApiException.class);
-                            mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Location> task) {
-                                    Location location = task.getResult();
-                                    if (location != null) {
-
-                                    }
-                                }
-                            });
-                        } catch (ApiException exception) {
-                            switch (exception.getStatusCode()) {
-                                case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
-                                    // Location settings are not satisfied. But could be fixed by showing the
-                                    // user a dialog.
-                                    Log.d("LocationLog","Location settings are not satisfied, resolution required");
-                                    break;
-                                case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                                    // Location settings are not satisfied. However, we have no way to fix the
-                                    // settings so we won't show the dialog.
-                                    Log.d("LocationLog","Location settings are not satisfied, Settings change unavailable");
-                                    break;
-                                default: Log.d("LocationLog","There is an exception");
-                            }
-                        }
-                    }
-                });*/
 
             } else {
                 Log.d("LocationLog","Location is not enabled");
