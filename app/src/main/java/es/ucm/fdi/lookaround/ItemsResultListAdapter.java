@@ -9,6 +9,8 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -92,6 +94,8 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         private String place_id;
         private String latitude;
         private String longitude;
+        private ImageView heart;
+        private boolean heartSelected;
 
 
         public ItemViewHolder(View itemView, ItemsResultListAdapter adapter) {
@@ -110,6 +114,24 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                     mapIntent.setPackage("com.google.android.apps.maps");
                     v.getContext().startActivity(mapIntent);
+
+                }
+            });
+            this.heartSelected = false;
+            this.heart = itemView.findViewById(R.id.imageViewFavorite);
+            this.heart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: If heart clicked, delete from favourites, else add it to favourites
+                    if (heartSelected) {
+                        heart.setImageResource(R.drawable.ic_heart_svgrepo_com);
+                        heartSelected = false;
+                    }
+                    else {
+                        heart.setImageResource(R.drawable.ic_heart_filled_svgrepo_com);
+                        heartSelected = true;
+                    }
+
 
                 }
             });

@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -39,8 +40,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     private TextView distanceText;
     private String category;
     private int distance;
-    private String[] cardNames = {"Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas"};
-    private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "hotel", "atm"};
+    private String[] cardNames = {"Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas", "Aeropuertos", "Atracciones", "Autobuses", "Rental"};
+    private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "lodging", "atm", "airport", "amusement_park", "bus_station", "car_rental"};
     private Handler handler;
     private ProgressBar progressBar;
 
@@ -126,7 +127,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
                         "&location=" + latitude + "%2C" + longitude +
                         "&type="+ category +
                         "&radius="+ distance +
-                        "&key=").build();
+                        "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -164,4 +165,5 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 }

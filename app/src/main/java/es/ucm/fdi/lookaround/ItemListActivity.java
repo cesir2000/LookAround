@@ -1,5 +1,6 @@
 package es.ucm.fdi.lookaround;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -8,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -75,9 +77,6 @@ public class ItemListActivity extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
-
-
-
         //Handler for clicking on the inactive zone of the window
 
         popupView.setOnTouchListener(new View.OnTouchListener() {
@@ -126,19 +125,6 @@ public class ItemListActivity extends AppCompatActivity {
         itemsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(itemsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    public void setFavorite(View view){
-        ImageView favorite = findViewById(R.id.imageViewFavorite);
-
-        if(favorite.getTag()==null || (int)favorite.getTag()==R.drawable.ic_heart_svgrepo_com) {
-            favorite.setImageResource(R.drawable.ic_heart_filled_svgrepo_com);
-            favorite.setTag(R.drawable.ic_heart_filled_svgrepo_com);
-        }
-        else {
-            favorite.setImageResource(R.drawable.ic_heart_svgrepo_com);
-            favorite.setTag(R.drawable.ic_heart_svgrepo_com);
-        }
     }
 
 }

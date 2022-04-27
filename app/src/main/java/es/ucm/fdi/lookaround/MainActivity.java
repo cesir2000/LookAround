@@ -37,19 +37,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements LocationListener {
+public class MainActivity extends AppCompatActivity {
 
-    private static final int PERMISSION_ID = 44;
     private CategoriesResultListAdapter categoriesAdapter;
     private RecyclerView recyclerView;
-    private String[] cardNames = {"Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas"};
-    private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "hotel", "atm"};
+    private String[] cardNames = {"Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas", "Aeropuertos", "Atracciones", "Autobuses", "Rental", "Taxi"};
+    private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "lodging", "atm", "airport", "amusement_park", "bus_station", "car_rental", "taxi_stand"};
     String latitude;
     String longitude;
-    private int[] images = {R.drawable.ic_restaurant_svg, R.drawable.ic_museum_svgrepo_com, R.drawable.ic_public_park_svgrepo_com, R.drawable.ic_beer_svgrepo_com, R.drawable.ic_monument_14_svgrepo_com, R.drawable.ic_hotel_svgrepo_com, R.drawable.ic_dollar_euro_money_exchange_svgrepo_com};
-    private FusedLocationProviderClient mFusedLocationClient;
-    private LocationSettingsRequest.Builder requestBuilder;
-    private LocationRequest mLocationRequest;
+    private int[] images = {R.drawable.ic_restaurant_svg, R.drawable.ic_museum_svgrepo_com, R.drawable.ic_public_park_svgrepo_com, R.drawable.ic_beer_svgrepo_com,
+            R.drawable.ic_monument_14_svgrepo_com, R.drawable.ic_hotel_svgrepo_com, R.drawable.ic_dollar_euro_money_exchange_svgrepo_com, R.drawable.ic_plane_svgrepo_com,
+            R.drawable.ic_amusement_park_svgrepo_com, R.drawable.ic_bus_svgrepo_com, R.drawable.ic_car_svgrepo_com, R.drawable.ic_taxi_svgrepo_com};
     private TextView distanceText;
     private int distance;
     private SeekBar distanceBar;
@@ -59,12 +57,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mLocationRequest = LocationRequest.create()
-                .setInterval(10000)
-                .setFastestInterval(1000)
-                .setNumUpdates(1);
-
-        getLocation(); // Method to get location of the user
+        latitude = getIntent().getStringExtra("latitude");
+        longitude = getIntent().getStringExtra("longitude");
         setContentView(R.layout.activity_main);
         // Names for the cards
         ArrayList<Pair<String, Integer>> categories = createCategories();    // Create all category names and vector images that are going to be shown on cards
@@ -99,138 +93,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         recyclerView.setAdapter(categoriesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        // Get user last known location
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-
         Log.d("MainActivityLog","End of onCreate()");
-    }
-
-    public void setLocation(String latitude, String longitude) {
-        this.longitude = longitude;
-        this.latitude = latitude;
-        categoriesAdapter.setLocation(latitude, longitude);
-        categoriesAdapter.notifyDataSetChanged();
-    }
-
-    @SuppressLint("MissingPermission")
-    public void getLocation() {
-        // check if permissions are given
-        if (checkPermissions()) {
-            Log.d("PermissionsLog","Permissions are given");
-            // check if location is enabled
-            if (isLocationEnabled()) {
-                Log.d("LocationLog","Location is enabled");
-
-                LocationCallback mLocationCallback = new LocationCallback() {
-                    @Override
-                    public void onLocationResult(LocationResult locationResult) {
-                        if (locationResult == null) {
-                            Log.d("LocationLog", "There was an error getting the current location");
-                            return;
-                        }
-                        for (Location location : locationResult.getLocations()) {
-                            if (location != null) {
-                                setLocation(String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
-                                Log.d("LocationLog", location.toString());
-                            }
-                        }
-                    }
-                };
-
-                LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest, mLocationCallback, null);
-
-                /*mFusedLocationClient.getLastLocation()
-                        .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                            @Override
-                            public void onSuccess(Location location) {
-                                // Got last known location. In some rare situations this can be null.
-                                if (location != null) {
-
-                                }
-                            }
-                        });*/
-                /*requestBuilder = new LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest);
-                Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(this).checkLocationSettings(requestBuilder.build());
-                result.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
-                    @Override
-                    public void onComplete(Task<LocationSettingsResponse> task) {
-                        try {
-                            LocationSettingsResponse response = task.getResult(ApiException.class);
-                            mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Location> task) {
-                                    Location location = task.getResult();
-                                    if (location != null) {
-
-                                    }
-                                }
-                            });
-                        } catch (ApiException exception) {
-                            switch (exception.getStatusCode()) {
-                                case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
-                                    // Location settings are not satisfied. But could be fixed by showing the
-                                    // user a dialog.
-                                    Log.d("LocationLog","Location settings are not satisfied, resolution required");
-                                    break;
-                                case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                                    // Location settings are not satisfied. However, we have no way to fix the
-                                    // settings so we won't show the dialog.
-                                    Log.d("LocationLog","Location settings are not satisfied, Settings change unavailable");
-                                    break;
-                                default: Log.d("LocationLog","There is an exception");
-                            }
-                        }
-                    }
-                });*/
-
-            } else {
-                Log.d("LocationLog","Location is not enabled");
-                Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(intent);
-            }
-        } else {
-            // if permissions aren't available,
-            // request for permissions
-            Log.d("PermissionsLog","Asking for permissions");
-            requestPermissions();
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private void requestNewLocationData() {
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
-    }
-
-    private LocationCallback mLocationCallback = new LocationCallback() {
-
-        @Override
-        public void onLocationResult(LocationResult locationResult) {
-            Location mLastLocation = locationResult.getLastLocation();
-            latitude = String.valueOf(mLastLocation.getLatitude());
-            longitude = String.valueOf(mLastLocation.getLongitude());
-        }
-    };
-
-    // Method to check if the permissions are on
-    private boolean checkPermissions() {
-        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-    }
-
-    // Method to see if the location is enabled
-    private boolean isLocationEnabled() {
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-    }
-
-    // method to request for permissions
-    private void requestPermissions() {
-        ActivityCompat.requestPermissions(this, new String[]{
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_ID);
     }
 
     // method to create a dict for the search in google API
@@ -254,24 +117,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         return names;
     }
 
-    public void showPlaces(View view) {
-        /*Get the place the user has pushed (restaurante, bar, museo, etc.)*/
-
-        /*Start the activity. Create a new instance of the activity and create a new instance of an intent*/
-        ItemListActivity calculatorResultActivity = new ItemListActivity();
-        Intent it = new Intent(this, ItemListActivity.class);
-        //it.putExtra("type", type_place);
-        startActivity(it);
-
-    }
-
     public void onHomeButtonClick(View view){
-        /*Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-
-        startActivity(intent);*/
     }
 
     public void onMapsButtonClick(View view){
@@ -288,8 +135,4 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         startActivity(intent);
     }
 
-    @Override
-    public void onLocationChanged(@NonNull Location location) {
-        getLocation();
-    }
 }

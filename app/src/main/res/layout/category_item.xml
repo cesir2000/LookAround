@@ -83,9 +83,9 @@
             android:id="@+id/progressBar4"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
-            android:layout_height="8dp"
+            android:layout_height="10dp"
             android:indeterminateTint="#44FF00"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

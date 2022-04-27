@@ -22,7 +22,7 @@
             android:id="@+id/relativeLayoutPlace"
             android:layout_width="0dp"
             android:layout_height="78dp"
-            android:background="#A4D6A4"
+            android:background="#D1FFCB"
             android:padding="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="51dp"
-                android:layout_marginEnd="310dp"
+                android:layout_marginEnd="290dp"
                 android:layout_marginBottom="0dp"
                 android:layout_toEndOf="@+id/imageView"
                 android:fontFamily="@font/asul"
@@ -96,7 +96,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="49dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="2dp"
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="-300dp"
+                android:layout_marginStart="-290dp"
                 android:layout_marginTop="51dp"
                 android:layout_marginBottom="2dp"
                 android:layout_toEndOf="@+id/textViewRating"
@@ -138,7 +138,7 @@
                 android:layout_height="18dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="-230dp"
+                android:layout_marginStart="-220dp"
                 android:layout_marginLeft="-163dp"
                 android:layout_marginTop="51dp"
                 android:layout_marginBottom="2dp"
@@ -166,11 +166,21 @@
                 android:layout_height="19dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="51dp"
                 android:layout_marginBottom="2dp"
                 android:layout_toEndOf="@+id/textViewCar"
                 app:srcCompat="@drawable/ic_distance_to_travel_between_two_points_svgrepo_com" />
+
+            <ImageView
+                android:id="@+id/imageViewFavorite"
+                android:layout_width="28dp"
+                android:layout_height="24dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                app:srcCompat="@drawable/ic_heart_svgrepo_com" />
 
         </RelativeLayout>
 
