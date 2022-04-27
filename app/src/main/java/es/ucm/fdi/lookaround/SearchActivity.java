@@ -126,7 +126,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
                         "&location=" + latitude + "%2C" + longitude +
                         "&type="+ category +
                         "&radius="+ distance +
-                        "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
+                        "&key=").build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

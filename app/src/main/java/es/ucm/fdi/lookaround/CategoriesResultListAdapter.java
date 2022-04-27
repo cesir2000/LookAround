@@ -128,7 +128,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                                     "&location=" + latitude + "%2C" + longitude +
                                     "&radius="+distance+
                                     "&type=" + searchNames.get(categoryView.getText().toString()) +
-                                    "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
+                                    "&key=").build();
                     client.newCall(request).enqueue(new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
