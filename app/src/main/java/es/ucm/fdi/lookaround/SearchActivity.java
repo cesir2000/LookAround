@@ -2,11 +2,14 @@ package es.ucm.fdi.lookaround;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,6 +41,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     private int distance;
     private String[] cardNames = {"Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas"};
     private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "hotel", "atm"};
+    private Handler handler;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +85,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, cardNames);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(ad);
+        this.progressBar = findViewById(R.id.progressBar);
+        this.handler = new Handler();
     }
 
     public void onHomeButtonClick(View view){
@@ -103,34 +110,42 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
 
     public void onSearchPlacesButtonClick(View view){
         String placeName = editTextTextPlaceName.getText().toString();
+        progressBar.setVisibility(View.VISIBLE);
+        // To hide keyboard on click
+        try {
+            InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
 
+        }
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-                        "query=" + placeName +
+                        "keyword=" + placeName +
                         "&location=" + latitude + "%2C" + longitude +
-                        "type="+ category +
+                        "&type="+ category +
                         "&radius="+ distance +
-                        "&key=").build();
+                        "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseData = response.body().string();
-                Log.d("RequestLog", latitude+" "+longitude + " "+ distance);
+                Log.d("RequestLog", latitude+" "+longitude + " "+ distance + " " + category);
+                Log.d("ResponseLog", responseData);
                 itemsList = (ArrayList<ItemInfo>) ItemInfo.fromJsonResponse(responseData, latitude, longitude);
-                runOnUiThread(new Runnable() {
 
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        itemsResultListAdapter.setList(itemsList);
                         itemsResultListAdapter.notifyDataSetChanged();
-
+                        progressBar.setVisibility(View.INVISIBLE);
                     }
                 });
 

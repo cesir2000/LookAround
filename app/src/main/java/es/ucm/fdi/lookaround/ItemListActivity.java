@@ -1,6 +1,5 @@
 package es.ucm.fdi.lookaround;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -9,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -130,9 +128,6 @@ public class ItemListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void setFavorite(View view){
-        ImageView favorite = findViewById(R.id.imageViewFavorite);
-        favorite.setImageResource(R.drawable.ic_heart_filled_svgrepo_com);
-    }
+
 
 }

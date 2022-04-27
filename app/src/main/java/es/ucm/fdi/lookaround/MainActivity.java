@@ -17,7 +17,6 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
-
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,10 +95,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         // Recycler view
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         categoriesAdapter = new CategoriesResultListAdapter(this, categories, searchNames, latitude, longitude, distance);
-
         categoriesAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(categoriesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         // Get user last known location
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);

@@ -76,6 +76,10 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         this.rating=rating;
     }
 
+    public void setList(ArrayList<ItemInfo> itemsList) {
+        this.items = itemsList;
+    }
+
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private ItemsResultListAdapter mAdapter;
