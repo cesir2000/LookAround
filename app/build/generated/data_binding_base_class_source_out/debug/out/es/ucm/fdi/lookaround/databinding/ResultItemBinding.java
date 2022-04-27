@@ -33,6 +33,9 @@ public final class ResultItemBinding implements ViewBinding {
   public final ImageView imageViewCar;
 
   @NonNull
+  public final ImageView imageViewFavorite;
+
+  @NonNull
   public final ImageView imageViewWalking;
 
   @NonNull
@@ -58,15 +61,17 @@ public final class ResultItemBinding implements ViewBinding {
 
   private ResultItemBinding(@NonNull CardView rootView, @NonNull CardView cv2,
       @NonNull ImageView imageView, @NonNull ImageView imageView2, @NonNull ImageView imageViewCar,
-      @NonNull ImageView imageViewWalking, @NonNull RelativeLayout relativeLayoutPlace,
-      @NonNull TextView textViewCar, @NonNull TextView textViewDistanceContent,
-      @NonNull TextView textViewOpen, @NonNull TextView textViewRating,
-      @NonNull TextView textViewTitleContentPlace, @NonNull TextView textViewWalking) {
+      @NonNull ImageView imageViewFavorite, @NonNull ImageView imageViewWalking,
+      @NonNull RelativeLayout relativeLayoutPlace, @NonNull TextView textViewCar,
+      @NonNull TextView textViewDistanceContent, @NonNull TextView textViewOpen,
+      @NonNull TextView textViewRating, @NonNull TextView textViewTitleContentPlace,
+      @NonNull TextView textViewWalking) {
     this.rootView = rootView;
     this.cv2 = cv2;
     this.imageView = imageView;
     this.imageView2 = imageView2;
     this.imageViewCar = imageViewCar;
+    this.imageViewFavorite = imageViewFavorite;
     this.imageViewWalking = imageViewWalking;
     this.relativeLayoutPlace = relativeLayoutPlace;
     this.textViewCar = textViewCar;
@@ -124,6 +129,12 @@ public final class ResultItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imageViewFavorite;
+      ImageView imageViewFavorite = rootView.findViewById(id);
+      if (imageViewFavorite == null) {
+        break missingId;
+      }
+
       id = R.id.imageViewWalking;
       ImageView imageViewWalking = rootView.findViewById(id);
       if (imageViewWalking == null) {
@@ -173,8 +184,9 @@ public final class ResultItemBinding implements ViewBinding {
       }
 
       return new ResultItemBinding((CardView) rootView, cv2, imageView, imageView2, imageViewCar,
-          imageViewWalking, relativeLayoutPlace, textViewCar, textViewDistanceContent, textViewOpen,
-          textViewRating, textViewTitleContentPlace, textViewWalking);
+          imageViewFavorite, imageViewWalking, relativeLayoutPlace, textViewCar,
+          textViewDistanceContent, textViewOpen, textViewRating, textViewTitleContentPlace,
+          textViewWalking);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

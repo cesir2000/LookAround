@@ -123,11 +123,11 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\Zeus_\.gradle\cach
 	android:allowBackup
 		ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:15:9-35
 	android:theme
-		ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:20:9-48
+		ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:20:9-65
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:30:9-32:71
+ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:30:9-32:55
 	android:value
-		ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:32:13-68
+		ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:32:13-52
 	android:name
 		ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:31:13-58
 activity#es.ucm.fdi.lookaround.MapActivity
@@ -159,7 +159,7 @@ ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManife
 	android:name
 		ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:46:27-74
 activity#es.ucm.fdi.lookaround.SearchActivity
-ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:49:9-61
+ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:49:9-52
 	android:name
 		ADDED from C:\Users\Zeus_\Documents\GitHub\LookAround\app\src\main\AndroidManifest.xml:49:19-49
 uses-sdk

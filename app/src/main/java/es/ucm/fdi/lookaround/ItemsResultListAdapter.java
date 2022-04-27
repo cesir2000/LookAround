@@ -1,8 +1,14 @@
 package es.ucm.fdi.lookaround;
 
+import static es.ucm.fdi.lookaround.ItemInfo.objectToString;
+import static es.ucm.fdi.lookaround.ItemInfo.stringToObjectS;
+
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
 
@@ -35,7 +41,7 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
     private double timeCar;
     private double timeWalking;
     private double rating;
-
+    private SharedPreferences sharedPreferences;
 
     public ItemsResultListAdapter(Context context, ArrayList<ItemInfo> items) {
         mInflater = LayoutInflater.from(context);
@@ -44,6 +50,7 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         this.timeCar = -1;
         this.timeWalking = -1;
         this.rating = -1;
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Override
@@ -54,7 +61,7 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
     }
 
     @Override
-    public void onBindViewHolder(ItemsResultListAdapter.ItemViewHolder holder, int position) {
+    public void onBindViewHolder(ItemsResultListAdapter.ItemViewHolder holder, int position) {  // For each item card inside a given category such as Restaurantes
         holder.setName(items.get(position).getName());
         holder.setDistance(items.get(position).getDistance());
         holder.setRating(items.get(position).getRating(), items.get(position).getTotalRatings());
@@ -64,6 +71,12 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         holder.setPlaceId(items.get(position).getPlaceId());
         holder.setTimeCar(items.get(position).getTimeCar());
         holder.setTimeWalking(items.get(position).getTimeWalking());
+        if(sharedPreferences.getString("MyFavoritePlace:"+items.get(position).getPlaceId(), "") == ""){
+            holder.setHeart(false);
+        }
+        else{
+            holder.setHeart(true);
+        }
     }
 
     @Override
@@ -101,7 +114,6 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
         public ItemViewHolder(View itemView, ItemsResultListAdapter adapter) {
             super(itemView);
             this.titleView = itemView.findViewById(R.id.textViewTitleContentPlace);
-
             this.timeCarView = itemView.findViewById(R.id.textViewCar);
             this.timeWalkingView = itemView.findViewById(R.id.textViewWalking);
             this.distanceView = itemView.findViewById(R.id.textViewDistanceContent);
@@ -117,17 +129,30 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
 
                 }
             });
-            this.heartSelected = false;
             this.heart = itemView.findViewById(R.id.imageViewFavorite);
             this.heart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // TODO: If heart clicked, delete from favourites, else add it to favourites
+                    String placeId = items.get(getAdapterPosition()).getPlaceId();
+                    //int value = sharedPreferences.getInt("FavoritesCounter", 0);
+                    System.out.println("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEREEEEEEEEEEEEEEEE 11111111111111111111111111");
+                    System.out.println(getAdapterPosition());
                     if (heartSelected) {
                         heart.setImageResource(R.drawable.ic_heart_svgrepo_com);
+                        sharedPreferences.edit().remove("MyFavoritePlace:"+placeId).apply();
+                        //sharedPreferences.edit().putInt("FavoritesCounter", value-1).commit();
                         heartSelected = false;
                     }
                     else {
+                        //sharedPreferences.edit().putString("MyFavoritePlace", objectToString( items.get(getAdapterPosition()))).commit();
+                        //String favoriteId = "FavoriteId" + value;
+                        String favoritePlace = "MyFavoritePlace:" + placeId;
+                        System.out.println(placeId);
+
+                        //sharedPreferences.edit().putString(favoriteId, favoritePlace).commit();
+                        sharedPreferences.edit().putString(favoritePlace, objectToString( items.get(getAdapterPosition()))).commit();
+                        //sharedPreferences.edit().putInt("FavoritesCounter", value+1).commit();
                         heart.setImageResource(R.drawable.ic_heart_filled_svgrepo_com);
                         heartSelected = true;
                     }
@@ -167,6 +192,16 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
 
         public void setLongitude(String longitude) {
             this.longitude = longitude;
+        }
+
+        public void setHeart(Boolean heartSelected) {
+            this.heartSelected = heartSelected;
+            if(heartSelected) {
+                heart.setImageResource(R.drawable.ic_heart_filled_svgrepo_com);
+            }
+            else{
+                heart.setImageResource(R.drawable.ic_heart_svgrepo_com);
+            }
         }
     }
 

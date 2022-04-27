@@ -4,9 +4,9 @@ es/ucm/fdi/lookaround/databinding/ActivityMainBinding.java
  es.ucm.fdi.lookaround.databinding.ActivityMainBinding
 es/ucm/fdi/lookaround/BuildConfig.java
  es.ucm.fdi.lookaround.BuildConfig
-es/ucm/fdi/lookaround/ItemListActivity.java
- es.ucm.fdi.lookaround.ItemListActivity
- es.ucm.fdi.lookaround.ItemListActivity$1
+es/ucm/fdi/lookaround/ItemInfo.java
+ es.ucm.fdi.lookaround.ItemInfo
+ es.ucm.fdi.lookaround.ItemInfo$1
 es/ucm/fdi/lookaround/databinding/ActivitySearchBinding.java
  es.ucm.fdi.lookaround.databinding.ActivitySearchBinding
 es/ucm/fdi/lookaround/MapActivity.java
@@ -31,16 +31,26 @@ es/ucm/fdi/lookaround/databinding/ToolsbarBinding.java
  es.ucm.fdi.lookaround.databinding.ToolsbarBinding
 es/ucm/fdi/lookaround/databinding/PopUpLayoutBinding.java
  es.ucm.fdi.lookaround.databinding.PopUpLayoutBinding
-es/ucm/fdi/lookaround/MainActivity.java
- es.ucm.fdi.lookaround.MainActivity
- es.ucm.fdi.lookaround.MainActivity$1
- es.ucm.fdi.lookaround.MainActivity$2
+es/ucm/fdi/lookaround/databinding/PlaceItemBinding.java
+ es.ucm.fdi.lookaround.databinding.PlaceItemBinding
 es/ucm/fdi/lookaround/databinding/ActivityMapTestBinding.java
  es.ucm.fdi.lookaround.databinding.ActivityMapTestBinding
 es/ucm/fdi/lookaround/databinding/InfowindowMapBinding.java
  es.ucm.fdi.lookaround.databinding.InfowindowMapBinding
-es/ucm/fdi/lookaround/databinding/PlaceItemBinding.java
- es.ucm.fdi.lookaround.databinding.PlaceItemBinding
+es/ucm/fdi/lookaround/MainActivity.java
+ es.ucm.fdi.lookaround.MainActivity
+ es.ucm.fdi.lookaround.MainActivity$1
+ es.ucm.fdi.lookaround.MainActivity$2
+ es.ucm.fdi.lookaround.MainActivity$3
+es/ucm/fdi/lookaround/CategoriesResultListAdapter.java
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1$1
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1$1$1
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1$2
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1$2$1
+ es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1$2$1$1
 es/ucm/fdi/lookaround/PopUpWindow.java
  es.ucm.fdi.lookaround.PopUpWindow
  es.ucm.fdi.lookaround.PopUpWindow$1
@@ -48,16 +58,15 @@ es/ucm/fdi/lookaround/PopUpWindow.java
 es/ucm/fdi/lookaround/SearchActivity.java
  es.ucm.fdi.lookaround.SearchActivity
  es.ucm.fdi.lookaround.SearchActivity$1
- es.ucm.fdi.lookaround.SearchActivity$1$1
-es/ucm/fdi/lookaround/CategoriesResultListAdapter.java
- es.ucm.fdi.lookaround.CategoriesResultListAdapter
- es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder
- es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1
- es.ucm.fdi.lookaround.CategoriesResultListAdapter$ItemViewHolder$1$1
+ es.ucm.fdi.lookaround.SearchActivity$2
+ es.ucm.fdi.lookaround.SearchActivity$2$1
+es/ucm/fdi/lookaround/ItemListActivity.java
+ es.ucm.fdi.lookaround.ItemListActivity
+ es.ucm.fdi.lookaround.ItemListActivity$1
+ es.ucm.fdi.lookaround.ItemListActivity$2
+ es.ucm.fdi.lookaround.ItemListActivity$3
 es/ucm/fdi/lookaround/ItemsResultListAdapter.java
  es.ucm.fdi.lookaround.ItemsResultListAdapter
  es.ucm.fdi.lookaround.ItemsResultListAdapter$ItemViewHolder
  es.ucm.fdi.lookaround.ItemsResultListAdapter$ItemViewHolder$1
-es/ucm/fdi/lookaround/ItemInfo.java
- es.ucm.fdi.lookaround.ItemInfo
- es.ucm.fdi.lookaround.ItemInfo$1
+ es.ucm.fdi.lookaround.ItemsResultListAdapter$ItemViewHolder$2

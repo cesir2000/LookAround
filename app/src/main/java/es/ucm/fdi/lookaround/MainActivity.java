@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private static final int PERMISSION_ID = 44;
     private CategoriesResultListAdapter categoriesAdapter;
     private RecyclerView recyclerView;
-    private String[] cardNames = {"Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas", "Aeropuertos", "Atracciones", "Autobuses", "Rental", "Taxi"};
-    private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "lodging", "atm", "airport", "amusement_park", "bus_station", "car_rental", "taxi_stand"};
+    private String[] cardNames = {"Favorites","Restaurantes", "Museos", "Parques", "Bares", "Monumentos", "Hoteles", "Divisas", "Aeropuertos", "Atracciones", "Autobuses", "Rental", "Taxi"};
+    private String[] searchNames = {"favorites","restaurant", "museum", "park", "bar", "tourist_attraction", "lodging", "atm", "airport", "amusement_park", "bus_station", "car_rental", "taxi_stand"};
     String latitude;
     String longitude;
-    private int[] images = {R.drawable.ic_restaurant_svg, R.drawable.ic_museum_svgrepo_com, R.drawable.ic_public_park_svgrepo_com, R.drawable.ic_beer_svgrepo_com,
+    private int[] images = {R.drawable.ic_heart_filled_svgrepo_com, R.drawable.ic_restaurant_svg, R.drawable.ic_museum_svgrepo_com, R.drawable.ic_public_park_svgrepo_com, R.drawable.ic_beer_svgrepo_com,
             R.drawable.ic_monument_14_svgrepo_com, R.drawable.ic_hotel_svgrepo_com, R.drawable.ic_dollar_euro_money_exchange_svgrepo_com, R.drawable.ic_plane_svgrepo_com,
             R.drawable.ic_amusement_park_svgrepo_com, R.drawable.ic_bus_svgrepo_com, R.drawable.ic_car_svgrepo_com, R.drawable.ic_taxi_svgrepo_com};
     private FusedLocationProviderClient mFusedLocationClient;
