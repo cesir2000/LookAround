@@ -129,6 +129,7 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
 
                 }
             });
+
             this.heart = itemView.findViewById(R.id.imageViewFavorite);
             this.heart.setOnClickListener(new View.OnClickListener() {
                 @Override

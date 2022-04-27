@@ -5,6 +5,7 @@ import static es.ucm.fdi.lookaround.ItemInfo.stringToObjectS;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -19,11 +20,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
-
-/*import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;*/
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,8 +57,8 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
         this.latitude = latitude;
         this.longitude = longitude;
         this.distance = distance;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
     }
 
@@ -169,22 +165,9 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                                     }
                                 }.start();
 
-
                         }
-
-                        });
-
-                        /*itemsList = new ArrayList<ItemInfo>();
-                        ItemInfo tmpItem = new ItemInfo();
-                        tmpItem.setName("Restaurantejsfj");
-                        tmpItem.setDistance("12km");
-                        tmpItem.setRating(4.3);
-                        tmpItem.setTotalRatings(43);
-                        tmpItem.setOpen(true);
-                        tmpItem.setTimeCar("2min");
-                        tmpItem.setTimeWalking("10min");
-                        itemsList.add(tmpItem);*/
-                    }
+      
+       
                     else{
                         itemsList = new ArrayList<ItemInfo>();
                         // LOADING favs from storage
