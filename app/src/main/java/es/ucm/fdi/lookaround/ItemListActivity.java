@@ -128,6 +128,17 @@ public class ItemListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    public void setFavorite(View view){
+        ImageView favorite = findViewById(R.id.imageViewFavorite);
 
+        if(favorite.getTag()==null || (int)favorite.getTag()==R.drawable.ic_heart_svgrepo_com) {
+            favorite.setImageResource(R.drawable.ic_heart_filled_svgrepo_com);
+            favorite.setTag(R.drawable.ic_heart_filled_svgrepo_com);
+        }
+        else {
+            favorite.setImageResource(R.drawable.ic_heart_svgrepo_com);
+            favorite.setTag(R.drawable.ic_heart_svgrepo_com);
+        }
+    }
 
 }
