@@ -176,17 +176,6 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                             });
                         } else {
                             itemsList = new ArrayList<ItemInfo>();
-                            // LOADING favs from storage
-                            //int favoritesCounter = sharedPreferences.getInt("FavoritesCounter", 0);
-                            /*for (int i = 0; i < favoritesCounter; i++){
-                                String favoriteId = "FavoriteId" + i;
-                                String placeIdKey = sharedPreferences.getString(favoriteId, "");
-                                String place = sharedPreferences.getString(placeIdKey, "");
-                                ItemInfo obj = stringToObjectS(place);
-                                if(obj != null){
-                                    itemsList.add(obj);
-                                }
-                            }*/
                             Map<String, ?> keys = sharedPreferences.getAll();
 
                             for (Map.Entry<String, ?> entry : keys.entrySet()) {

@@ -24,9 +24,7 @@ public class ItemLoaderCallbacks implements LoaderManager.LoaderCallbacks<List<I
 
     @Override
     public void onLoadFinished(Loader<List<ItemInfo>> loader, List<ItemInfo> data) {
-        /*if (data != null) {
-            ((MainActivity) context).updateItemsResultList(data);
-        }*/
+        
     }
 
     @Override

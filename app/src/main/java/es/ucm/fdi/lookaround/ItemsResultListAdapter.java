@@ -21,10 +21,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-/*import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;*/
 
 
 import java.io.IOException;
@@ -134,26 +130,16 @@ public class ItemsResultListAdapter extends RecyclerView.Adapter<ItemsResultList
             this.heart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // TODO: If heart clicked, delete from favourites, else add it to favourites
+                    
                     String placeId = items.get(getAdapterPosition()).getPlaceId();
-                    //int value = sharedPreferences.getInt("FavoritesCounter", 0);
-                    System.out.println("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEREEEEEEEEEEEEEEEE 11111111111111111111111111");
-                    System.out.println(getAdapterPosition());
                     if (heartSelected) {
                         heart.setImageResource(R.drawable.ic_heart_svgrepo_com);
                         sharedPreferences.edit().remove("MyFavoritePlace:"+placeId).apply();
-                        //sharedPreferences.edit().putInt("FavoritesCounter", value-1).commit();
                         heartSelected = false;
                     }
                     else {
-                        //sharedPreferences.edit().putString("MyFavoritePlace", objectToString( items.get(getAdapterPosition()))).commit();
-                        //String favoriteId = "FavoriteId" + value;
                         String favoritePlace = "MyFavoritePlace:" + placeId;
-                        System.out.println(placeId);
-
-                        //sharedPreferences.edit().putString(favoriteId, favoritePlace).commit();
                         sharedPreferences.edit().putString(favoritePlace, objectToString( items.get(getAdapterPosition()))).commit();
-                        //sharedPreferences.edit().putInt("FavoritesCounter", value+1).commit();
                         heart.setImageResource(R.drawable.ic_heart_filled_svgrepo_com);
                         heartSelected = true;
                     }
