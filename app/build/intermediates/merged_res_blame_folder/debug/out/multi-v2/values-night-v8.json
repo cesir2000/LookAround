@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

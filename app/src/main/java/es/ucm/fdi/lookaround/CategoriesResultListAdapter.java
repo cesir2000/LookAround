@@ -189,6 +189,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                                     ItemListActivity.class);
                             intentMain.putExtra("itemsList", (Serializable) itemsList);
                             v.getContext().startActivity(intentMain);
+                            searching = false;
                         }
                     }
 

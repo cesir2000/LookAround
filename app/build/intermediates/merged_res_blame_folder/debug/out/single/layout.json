@@ -1,50 +1,42 @@
 [
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_map.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\activity_map.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\infowindow_map.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\infowindow_map.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_first.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\activity_first.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_search.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\activity_search.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\toolsbar.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\toolsbar.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\result_item.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\result_item.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\category_item.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\category_item.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\toolsbar.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\toolsbar.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\place_item.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\place_item.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\pop_up_layout.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\pop_up_layout.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_item_list.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\activity_item_list.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\pop_up_layout.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\pop_up_layout.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_map_test.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\activity_map_test.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\category_item.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\category_item.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_item_list.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\activity_item_list.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_map.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\activity_map.xml"
     },
     {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\result_item.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\result_item.xml"
-    },
-    {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\infowindow_map.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\infowindow_map.xml"
-    },
-    {
-        "merged": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_search.xml",
-        "source": "C:\\LookAround\\LookAround-develop\\app\\src\\main\\res\\layout\\activity_search.xml"
+        "merged": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_first.xml",
+        "source": "C:\\LookAround\\LookAround\\app\\src\\main\\res\\layout\\activity_first.xml"
     }
 ]

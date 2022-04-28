@@ -2865,7 +2865,6 @@ id linearLayout2
 id listMode
 id list_item
 id map
-id mapView
 id masked
 id match_constraint
 id match_parent
@@ -3225,7 +3224,6 @@ layout activity_first
 layout activity_item_list
 layout activity_main
 layout activity_map
-layout activity_map_test
 layout activity_search
 layout category_item
 layout custom_dialog
@@ -3297,7 +3295,6 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout place_item
 layout pop_up_layout
 layout result_item
 layout select_dialog_item_material

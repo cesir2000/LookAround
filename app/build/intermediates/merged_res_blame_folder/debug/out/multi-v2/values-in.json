@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\LookAround\\LookAround-develop\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-in\\values-in.xml",
+            "outputFile": "C:\\LookAround\\LookAround\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-in\\values-in.xml",
             "map": [
                 {
                     "source": "C:\\Users\\cesir.DESKTOP-IAB7EFF\\.gradle\\caches\\transforms-2\\files-2.1\\2469143832a3c02cd375d484262128cd\\play-services-basement-18.0.0\\res\\values-in\\values.xml",
