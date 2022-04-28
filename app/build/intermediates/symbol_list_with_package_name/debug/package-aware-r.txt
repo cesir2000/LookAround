@@ -2547,6 +2547,8 @@ drawable ic_search_svgrepo_com
 drawable ic_star_svgrepo_com
 drawable ic_taxi_svgrepo_com
 drawable ic_walking_svgrepo_com
+drawable lookaround
+drawable lookaroundlogo
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
 drawable m3_radiobutton_ripple
@@ -2831,6 +2833,7 @@ id imageButton3
 id imageButton4
 id imageView
 id imageView2
+id imageView3
 id imageViewCar
 id imageViewFavorite
 id imageViewSVGContent
@@ -3074,6 +3077,8 @@ id textView4
 id textViewCar
 id textViewDistance
 id textViewDistanceContent
+id textViewErrorLoc
+id textViewErrorLoc2
 id textViewErrorOnSearch
 id textViewInfoClick
 id textViewInfoName
@@ -3216,6 +3221,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_first
 layout activity_item_list
 layout activity_main
 layout activity_map
@@ -3317,6 +3323,7 @@ layout toolsbar
 menu example_menu
 menu example_menu2
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description

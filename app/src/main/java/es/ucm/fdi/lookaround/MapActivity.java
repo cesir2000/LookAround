@@ -48,6 +48,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private TextView textErrorOnSearch;
     private Marker actualMarker;
     private final LatLng[] coordinatesFromClick = new LatLng[1];
+    private String latitude;
+    private String longitude;
 
 
     @Override
@@ -57,6 +59,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         binding = ActivityMapBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        latitude = getIntent().getStringExtra("realLatitude");
+        longitude = getIntent().getStringExtra("realLongitude");
         searchView = findViewById(R.id.idSearchView);
         radioGroup = findViewById(R.id.RadGroup);
         radioButtonCoordinates = findViewById(R.id.radioButtonCoordinates);
@@ -219,6 +223,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("latitude", marker.getPosition().latitude+"");
                 intent.putExtra("longitude", marker.getPosition().longitude+"");
+                intent.putExtra("realLatitude",latitude+"");
+                intent.putExtra("realLongitude",longitude+"");
                 startActivity(intent);
             }
         });

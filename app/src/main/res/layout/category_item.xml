@@ -84,7 +84,7 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
             android:layout_height="10dp"
-            android:indeterminateTint="#44FF00"
+            android:indeterminateTint="#FF5722"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

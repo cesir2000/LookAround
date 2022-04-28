@@ -1,37 +1,17 @@
 package es.ucm.fdi.lookaround;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 
 import android.os.Bundle;
-import android.os.Looper;
-import android.provider.Settings;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,18 +31,42 @@ public class MainActivity extends AppCompatActivity {
     private TextView distanceText;
     private int distance;
     private SeekBar distanceBar;
-
+    private TextView errorLoc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         latitude = getIntent().getStringExtra("latitude");
         longitude = getIntent().getStringExtra("longitude");
-        setContentView(R.layout.activity_main);
+        errorLoc = findViewById(R.id.textViewErrorLoc2);
+
+        if (latitude==null && longitude==null) {
+            errorLoc.setText("Localización no obtenida, revisa si tu localización está activada y reinicia la aplicación para buscar sitios no favoritos");
+            String[] tmpList = {"Favoritos"};
+            String[] tmpListsn = {"favorites"};
+            ArrayList<Pair<String,Integer>> tmp = new ArrayList<>();
+            tmp.add(new Pair<>(cardNames[0],images[0]));
+            recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+            categoriesAdapter = new CategoriesResultListAdapter(this, tmp, null, latitude, longitude, distance);
+            categoriesAdapter.notifyDataSetChanged();
+            recyclerView.setAdapter(categoriesAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }
+        else {
+            ArrayList<Pair<String, Integer>> categories = createCategories();    // Create all category names and vector images that are going to be shown on cards
+            Map<String, String> searchNames = createSearchNamesDict();          // Create a dict to map card names with search names of Google API
+            errorLoc.setText("");
+            // Recycler view
+            recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+            categoriesAdapter = new CategoriesResultListAdapter(this, categories, searchNames, latitude, longitude, distance);
+            categoriesAdapter.notifyDataSetChanged();
+            recyclerView.setAdapter(categoriesAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }
         // Names for the cards
-        ArrayList<Pair<String, Integer>> categories = createCategories();    // Create all category names and vector images that are going to be shown on cards
-        Map<String, String> searchNames = createSearchNamesDict();          // Create a dict to map card names with search names of Google API
+
         distanceText = findViewById(R.id.textViewDistance);
         distanceBar = findViewById(R.id.seekBar3);
         distanceBar.setProgress(0);
@@ -86,12 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        // Recycler view
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        categoriesAdapter = new CategoriesResultListAdapter(this, categories, searchNames, latitude, longitude, distance);
-        categoriesAdapter.notifyDataSetChanged();
-        recyclerView.setAdapter(categoriesAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        
         Log.d("MainActivityLog","End of onCreate()");
     }
 
@@ -124,12 +123,16 @@ public class MainActivity extends AppCompatActivity {
     public void onMapsButtonClick(View view){
         Intent intent = new Intent(getApplicationContext(), MapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra("realLatitude",latitude);
+        intent.putExtra("realLongitude",longitude);
         startActivity(intent);
     }
 
     public void onSearchButtonClick(View view){
         Intent intent = new Intent(this, SearchActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra("realLatitude", latitude);
+        intent.putExtra("realLongitude", longitude);
         intent.putExtra("latitude", latitude);
         intent.putExtra("longitude", longitude);
         startActivity(intent);

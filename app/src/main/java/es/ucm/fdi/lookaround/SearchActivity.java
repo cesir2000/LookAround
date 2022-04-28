@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -35,7 +36,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     private ItemsResultListAdapter itemsResultListAdapter;
     private EditText editTextTextPlaceName;
     private ArrayList<ItemInfo> itemsList = new ArrayList<ItemInfo>();;
-    private String latitude, longitude;
+    private String latitude, longitude, realLatitude,realLongitude;
     private SeekBar distanceBar;
     private TextView distanceText;
     private String category;
@@ -44,6 +45,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     private String[] searchNames = {"restaurant", "museum", "park", "bar", "tourist_attraction", "lodging", "atm", "airport", "amusement_park", "bus_station", "car_rental"};
     private Handler handler;
     private ProgressBar progressBar;
+    private TextView errorLoc;
+    private Button searchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,17 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         setContentView(R.layout.activity_search);
         latitude = getIntent().getStringExtra("latitude");
         longitude = getIntent().getStringExtra("longitude");
+        realLatitude = getIntent().getStringExtra("realLatitude");
+        realLongitude = getIntent().getStringExtra("realLongitude");
+        errorLoc=findViewById(R.id.textViewErrorLoc);
+        searchButton = findViewById(R.id.button);
+        if (latitude==null && longitude==null) {
+            errorLoc.setText("Localización no obtenida, revisa si tu localización está activada y reinicia la aplicación para obtenerla o utiliza el mapa para elegir una localización");
+            searchButton.setAlpha(0.2f);
+        }
+        else {
+            errorLoc.setText("");
+        }
         distanceText = findViewById(R.id.textViewDistance);
         distance = 0;
         distanceBar = findViewById(R.id.seekBar3);
@@ -92,8 +106,10 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
 
     public void onHomeButtonClick(View view){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);    // To delete animation when changing screens
+        intent.putExtra("latitude", realLatitude);
+        intent.putExtra("longitude", realLongitude);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 
@@ -101,6 +117,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
 
         Intent intent = new Intent(getApplicationContext(), MapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra("realLatitude", realLatitude);
+        intent.putExtra("realLongitude", realLongitude);
         startActivity(intent);
 
     }
@@ -111,47 +129,52 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
 
     public void onSearchPlacesButtonClick(View view){
         String placeName = editTextTextPlaceName.getText().toString();
-        progressBar.setVisibility(View.VISIBLE);
-        // To hide keyboard on click
-        try {
-            InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        } catch (Exception e) {
-
+        if (latitude==null && longitude==null) {
+            return;
         }
-
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-                        "keyword=" + placeName +
-                        "&location=" + latitude + "%2C" + longitude +
-                        "&type="+ category +
-                        "&radius="+ distance +
-                        "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                progressBar.setVisibility(View.INVISIBLE);
+        else {
+            progressBar.setVisibility(View.VISIBLE);
+            // To hide keyboard on click
+            try {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            } catch (Exception e) {
+                
             }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String responseData = response.body().string();
-                Log.d("RequestLog", latitude+" "+longitude + " "+ distance + " " + category);
-                Log.d("ResponseLog", responseData);
-                itemsList = (ArrayList<ItemInfo>) ItemInfo.fromJsonResponse(responseData, latitude, longitude);
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
+                            "keyword=" + placeName +
+                            "&location=" + latitude + "%2C" + longitude +
+                            "&type=" + category +
+                            "&radius=" + distance +
+                            "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                }
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        itemsResultListAdapter.setList(itemsList);
-                        itemsResultListAdapter.notifyDataSetChanged();
-                        progressBar.setVisibility(View.INVISIBLE);
-                    }
-                });
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String responseData = response.body().string();
+                    Log.d("RequestLog", latitude + " " + longitude + " " + distance + " " + category);
+                    Log.d("ResponseLog", responseData);
+                    itemsList = (ArrayList<ItemInfo>) ItemInfo.fromJsonResponse(responseData, latitude, longitude);
 
-            }
-        });
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            itemsResultListAdapter.setList(itemsList);
+                            itemsResultListAdapter.notifyDataSetChanged();
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                    });
+
+                }
+            });
+        }
     }
 
 

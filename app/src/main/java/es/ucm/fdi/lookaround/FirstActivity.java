@@ -1,5 +1,6 @@
 package es.ucm.fdi.lookaround;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -28,12 +29,13 @@ public class FirstActivity extends AppCompatActivity {
     private LocationRequest mLocationRequest;
     private String longitude;
     private String latitude;
+    private boolean created;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-
+        created = false;
         mLocationRequest = LocationRequest.create()
                 .setInterval(10000)
                 .setFastestInterval(1000)
@@ -61,6 +63,12 @@ public class FirstActivity extends AppCompatActivity {
                     public void onLocationResult(LocationResult locationResult) {
                         if (locationResult == null) {
                             Log.d("LocationLog", "There was an error getting the current location");
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.putExtra("latitude",latitude);
+                            intent.putExtra("longitude",longitude);
+                            created = true;
+                            startActivity(intent);
                             return;
                         }
                         for (Location location : locationResult.getLocations()) {
@@ -71,6 +79,7 @@ public class FirstActivity extends AppCompatActivity {
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.putExtra("latitude",latitude);
                                 intent.putExtra("longitude",longitude);
+                                created = true;
                                 startActivity(intent);
                             }
                         }
@@ -81,14 +90,36 @@ public class FirstActivity extends AppCompatActivity {
 
             } else {
                 Log.d("LocationLog","Location is not enabled");
-                Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Por favor, activa tu localización", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
             }
+            Thread background = new Thread() {
+                public void run() {
+                    try {
+                        // Thread will sleep for 5 seconds
+                        sleep(5*1000);
+                        if(!created) {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.putExtra("latitude", latitude);
+                            intent.putExtra("longitude", longitude);
+                            startActivity(intent);
+                        }
+
+                        //Remove activity
+                        finish();
+                    } catch (Exception e) {
+                    }
+                }
+            };
+            // start thread
+            background.start();
         } else {
             // if permissions aren't available,
             // request for permissions
             Log.d("PermissionsLog","Asking for permissions");
+            Toast.makeText(this, "Necesitas la localizacion para buscar sitios cercanos", Toast.LENGTH_LONG).show();
             requestPermissions();
         }
     }
@@ -119,5 +150,12 @@ public class FirstActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_ID);
+
+    }
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_ID) {
+            getLocation();
+        }
     }
 }

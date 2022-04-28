@@ -42,10 +42,14 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final TextView textViewDistance;
 
+  @NonNull
+  public final TextView textViewErrorLoc2;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull ConstraintLayout constraintLayout, @NonNull ConstraintLayout constraintLayout2,
       @NonNull LinearLayout linearLayout, @NonNull RecyclerView recyclerView,
-      @NonNull SeekBar seekBar3, @NonNull TextView textView4, @NonNull TextView textViewDistance) {
+      @NonNull SeekBar seekBar3, @NonNull TextView textView4, @NonNull TextView textViewDistance,
+      @NonNull TextView textViewErrorLoc2) {
     this.rootView = rootView;
     this.constraintLayout = constraintLayout;
     this.constraintLayout2 = constraintLayout2;
@@ -54,6 +58,7 @@ public final class ActivityMainBinding implements ViewBinding {
     this.seekBar3 = seekBar3;
     this.textView4 = textView4;
     this.textViewDistance = textViewDistance;
+    this.textViewErrorLoc2 = textViewErrorLoc2;
   }
 
   @Override
@@ -125,8 +130,15 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textViewErrorLoc2;
+      TextView textViewErrorLoc2 = rootView.findViewById(id);
+      if (textViewErrorLoc2 == null) {
+        break missingId;
+      }
+
       return new ActivityMainBinding((ConstraintLayout) rootView, constraintLayout,
-          constraintLayout2, linearLayout, recyclerView, seekBar3, textView4, textViewDistance);
+          constraintLayout2, linearLayout, recyclerView, seekBar3, textView4, textViewDistance,
+          textViewErrorLoc2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

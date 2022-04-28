@@ -47,6 +47,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
     private String longitude;
     private int distance;
     private SharedPreferences sharedPreferences;
+    private boolean searching;
 
 
 
@@ -57,6 +58,7 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
         this.latitude = latitude;
         this.longitude = longitude;
         this.distance = distance;
+        this.searching = false;
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
@@ -71,10 +73,12 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) { // For each category card on the main screen
-        String name = categoryList.get(position).first;
-        int image = categoryList.get(position).second;
-        holder.setName(categoryList.get(position).first);
-        holder.setImage(categoryList.get(position).second);
+        if ((latitude!=null && longitude!=null) || categoryList.get(position).first.equals("Favoritos")) {
+            String name = categoryList.get(position).first;
+            int image = categoryList.get(position).second;
+            holder.setName(categoryList.get(position).first);
+            holder.setImage(categoryList.get(position).second);
+        }
     }
 
     @Override
@@ -111,9 +115,11 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String distanceText;
-                    String categoryClicked = categoryView.getText().toString();
-                    if (!categoryClicked.equals("Favorites")){
+                    if (!searching){
+                        searching = true;
+                        String distanceText;
+                        String categoryClicked = categoryView.getText().toString();
+                        if (!categoryClicked.equals("Favoritos")) {
 
                             new Thread() {
                                 @Override
@@ -127,76 +133,79 @@ public class CategoriesResultListAdapter extends RecyclerView.Adapter<Categories
                                 }
                             }.start();
 
-                        //https://developers.google.com/maps/documentation/places/web-service/search-nearby
-                        //https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project api create account
+                            //https://developers.google.com/maps/documentation/places/web-service/search-nearby
+                            //https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project api create account
 
-                        OkHttpClient client = new OkHttpClient();
-                        Request request = new Request.Builder()
-                                .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-                                        "&location=" + latitude + "%2C" + longitude +
-                                        "&radius=" + distance +
-                                        "&type=" + searchNames.get(categoryView.getText().toString()) +
-                                        "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
-                        client.newCall(request).enqueue(new Callback() {
-                            @Override
-                            public void onFailure(Call call, IOException e) {
+                            OkHttpClient client = new OkHttpClient();
+                            Request request = new Request.Builder()
+                                    .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
+                                            "&location=" + latitude + "%2C" + longitude +
+                                            "&radius=" + distance +
+                                            "&type=" + searchNames.get(categoryView.getText().toString()) +
+                                            "&key=AIzaSyD7zEUdA01mZPjRmufqJj5PzdtzZuudwxg").build();
+                            client.newCall(request).enqueue(new Callback() {
+                                @Override
+                                public void onFailure(Call call, IOException e) {
 
+                                }
+                                @Override
+                                public void onResponse(Call call, Response response) throws IOException {
+                                    String responseData = response.body().string();
+                                    Log.d("RequestLog", latitude + " " + longitude + " " + distance);
+                                    itemsList = ItemInfo.fromJsonResponse(responseData, latitude, longitude);
+                                    Intent intentMain = new Intent(v.getContext(),
+                                            ItemListActivity.class);
+                                    intentMain.putExtra("itemsList", (Serializable) itemsList);
+                                    v.getContext().startActivity(intentMain);
+                                    Log.i("Content ", " Results Layout ");
+                                    new Thread() {
+                                        @Override
+                                        public void run() {
+                                            handler.post(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    progressBar.setVisibility(View.INVISIBLE);
+                                                }
+                                            });
+                                        }
+                                    }.start();
+                                    searching = false;
+
+                                }
+
+                            });
+                        } else {
+                            itemsList = new ArrayList<ItemInfo>();
+                            // LOADING favs from storage
+                            //int favoritesCounter = sharedPreferences.getInt("FavoritesCounter", 0);
+                            /*for (int i = 0; i < favoritesCounter; i++){
+                                String favoriteId = "FavoriteId" + i;
+                                String placeIdKey = sharedPreferences.getString(favoriteId, "");
+                                String place = sharedPreferences.getString(placeIdKey, "");
+                                ItemInfo obj = stringToObjectS(place);
+                                if(obj != null){
+                                    itemsList.add(obj);
+                                }
+                            }*/
+                            Map<String, ?> keys = sharedPreferences.getAll();
+
+                            for (Map.Entry<String, ?> entry : keys.entrySet()) {
+                                String place = sharedPreferences.getString(entry.getKey(), "");
+                                ItemInfo obj = stringToObjectS(place);
+                                if (obj != null) {
+                                    itemsList.add(obj);
+                                }
                             }
-
-                            @Override
-                            public void onResponse(Call call, Response response) throws IOException {
-                                String responseData = response.body().string();
-                                Log.d("RequestLog", latitude + " " + longitude + " " + distance);
-                                itemsList = ItemInfo.fromJsonResponse(responseData, latitude, longitude);
-                                Intent intentMain = new Intent(v.getContext(),
-                                        ItemListActivity.class);
-                                intentMain.putExtra("itemsList", (Serializable) itemsList);
-                                v.getContext().startActivity(intentMain);
-                                Log.i("Content ", " Results Layout ");
-                                new Thread() {
-                                    @Override
-                                    public void run() {
-                                        handler.post(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                progressBar.setVisibility(View.INVISIBLE);
-                                            }
-                                        });
-                                    }
-                                }.start();
-
+                            Intent intentMain = new Intent(v.getContext(),
+                                    ItemListActivity.class);
+                            intentMain.putExtra("itemsList", (Serializable) itemsList);
+                            v.getContext().startActivity(intentMain);
                         }
-      
-       
-                    else{
-                        itemsList = new ArrayList<ItemInfo>();
-                        // LOADING favs from storage
-                        //int favoritesCounter = sharedPreferences.getInt("FavoritesCounter", 0);
-                        /*for (int i = 0; i < favoritesCounter; i++){
-                            String favoriteId = "FavoriteId" + i;
-                            String placeIdKey = sharedPreferences.getString(favoriteId, "");
-                            String place = sharedPreferences.getString(placeIdKey, "");
-                            ItemInfo obj = stringToObjectS(place);
-                            if(obj != null){
-                                itemsList.add(obj);
-                            }
-                        }*/
-                        Map<String,?> keys = sharedPreferences.getAll();
-
-                        for(Map.Entry<String,?> entry : keys.entrySet()){
-                            String place = sharedPreferences.getString(entry.getKey(), "");
-                            ItemInfo obj = stringToObjectS(place);
-                            if(obj != null){
-                                itemsList.add(obj);
-                            }
-                        }
-                        Intent intentMain = new Intent(v.getContext(),
-                                ItemListActivity.class);
-                        intentMain.putExtra("itemsList", (Serializable) itemsList);
-                        v.getContext().startActivity(intentMain);
                     }
+
                 }
             });
+
         }
 
         public void setName(String name) {
